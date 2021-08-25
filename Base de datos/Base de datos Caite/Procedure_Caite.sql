@@ -1,0 +1,11 @@
+USE if6201_caite;
+
+DELIMITER $$
+CREATE PROCEDURE sp_categorias()
+BEGIN
+	SELECT 
+    ID
+    ,NOMBRE
+    FROM tb_CATEGORIA;
+END$$
+
