@@ -1,1 +1,1 @@
-Create table
+Create table Prueba
