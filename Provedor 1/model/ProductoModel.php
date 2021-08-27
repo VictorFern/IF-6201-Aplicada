@@ -14,8 +14,8 @@ class ProductoModel {
         require 'libs/SPDO.php';
         $this->db = SPDO::singleton();
     }
- public function registrar($cedula, $nombre, $contrasena, $direccion) {
-        $consulta = $this->db->prepare("call sp_registrar_cliente(" . $cedula . ",'" . $nombre . "','" . $contrasena . "','" . $direccion . "');");
+ public function registrar($nombre, $descripcion, $precio, $talla, $color, $marca, $foto, $idc) {
+        $consulta = $this->db->prepare("call sp_insetar_producto('" . $nombre . "','" . $descripcion . "'," . $precio . "," . $talla . ",'".$color."','".$marca."','".$foto."', ".$idc.");");
         $consulta->execute();
         $consulta->closeCursor();
     }

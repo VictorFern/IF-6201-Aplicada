@@ -6,7 +6,7 @@ include_once 'public/header.php';
         <div  class="col-md-3"></div>
         <div id="registraAdimin" class="col-md-6"class="col-sm-12"style="margin-top: 25px;">
             <h3 id="login1">Registrar Producto</h3>
-            <form name="registrar" action="?controlador=Producto&accion=registrarRegistrar" method="post">
+            <form enctype="multipart/form-data" name="registrar" action="?controlador=Producto&accion=registrarProducto" method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Producto" value=""required />
                 </div>
@@ -41,7 +41,7 @@ include_once 'public/header.php';
                     <input type="text" class="form-control" id="Marca" name="Marca" placeholder="Marca" value="" required/>
                 </div>
 
-                <div class="form-group">
+                <div>
                     <input  type="file"  class="form-control" accept="image/png, .jpeg, .jpg, image/gif" id="imagen" name="imagen">
                 </div>
 
