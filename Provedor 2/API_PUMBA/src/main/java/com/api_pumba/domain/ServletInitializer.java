@@ -1,0 +1,14 @@
+package com.api_pumba.domain;
+
+import com.api_pumba.RunApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+public class ServletInitializer extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(RunApplication.class);
+    }
+
+}
