@@ -101,7 +101,7 @@ class ProductoController {
     }
     
     
-=======
+
     
     public function buscarProducto() {
         require 'model/ProductoModel.php';

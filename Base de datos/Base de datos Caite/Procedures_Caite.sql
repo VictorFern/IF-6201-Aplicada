@@ -85,4 +85,67 @@ BEGIN
     FROM tb_PRODUCTO
     where IsDelete!=1;
 END $$
+
 CALL sp_mostrar_producto_id(1)
+
+DELIMITER $$
+CREATE PROCEDURE sp_mostrar_producto_id(param_ID int)
+begin
+	select
+		producto.ID
+		,producto.NOMBRE
+		,producto.DESCRIPCION
+		,producto.PRECIO
+		,producto.TALLA
+		,producto.COLOR
+		,producto.MARCA
+		,producto.IMAGEN
+        ,categoria.nombre Categoria
+    from tb_producto as producto
+		join tb_producto_categoria as producto_categoria
+			on 
+				producto_categoria.CODIGOP=producto.ID
+        join tb_categoria  as categoria
+			on 
+				categoria.ID=producto_categoria.CODIGOC
+    where producto.ID like param_ID and producto.IsDelete != 1;           
+end $$
+
+DELIMITER $$
+CREATE PROCEDURE sp_actualizar_producto(param_ID INT
+									, param_NOMBRE VARCHAR(50)
+                                    , param_DESCRIPCION VARCHAR(100)
+                                    , param_PRECIO INT
+                                    , param_TALLA INT
+                                    , param_COLOR VARCHAR(50)
+                                    , param_MARCA VARCHAR(50)
+                                    , param_CATEGORIA INT)
+BEGIN
+
+UPDATE tb_producto
+ SET 
+	NOMBRE= param_NOMBRE
+    ,DESCRIPCION=param_DESCRIPCION
+    ,PRECIO= param_PRECIO
+    ,TALLA=param_TALLA
+	,COLOR=param_COLOR
+    , MARCA=param_MARCA
+    WHERE ID = param_ID;
+    
+UPDATE tb_producto_categoria
+SET CODIGOC=param_CATEGORIA
+WHERE CODIGOP = param_ID;
+              
+END $$
+ALTER TABLE tb_producto 
+ADD COLUMN IsDelete bit;
+
+DELIMITER $$
+CREATE PROCEDURE sp_eliminar_producto(param_ID INT)
+BEGIN
+
+UPDATE tb_producto
+SET IsDelete=1
+WHERE ID = param_ID;
+              
+END $$
