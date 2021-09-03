@@ -5,7 +5,7 @@
         <meta charset="utf-8"/>
         <meta name="description" content="VicProdux de limpieza y proteción" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" type="text/css" href="public/css/bootstrapsss.css"/>
+        <link rel="stylesheet" type="text/css" href="public/css/bootstrapssss.css"/>
         <script type="text/javascript" src="public/js/bootstrap.js"></script>
         <script type="text/javascript" src="public/js/jquery.js"></script>
         <script type="text/javascript" src="public/js/jquery-3.2.1.js"></script>
@@ -19,7 +19,9 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Caite</a>
+
+            <a class="navbar-brand" href="?controlador=Producto&accion=inicio"">Caite</a>
+
             <button
                 class="navbar-toggler"
                 type="button"
@@ -40,17 +42,24 @@
                         <a class="nav-link" href="?controlador=Producto&accion=registrar">Nuevo Producto</a>
                     </li>
                     <li class="nav-item">
+
                         <a class="nav-link" href="?controlador=Producto&accion=actualiza">Actualizar Producto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="?controlador=Producto&accion=eliminar">Eliminar Producto</a>
                     </li>
                     <form class="d-flex">
+
+                     
+                    <form class="d-flex" name="buscar" action="?controlador=Producto&accion=buscarProducto" method="post">
                         <input
                             class="form-control me-2"
                             type="search"
                             placeholder="Buscar producto"
                             aria-label="Search"
+
+                            id="Nombre" name="Nombre"
+
                             />
                         <button class="btn btn-outline-success" type="submit">
                             Buscar

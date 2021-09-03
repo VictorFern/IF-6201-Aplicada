@@ -8,16 +8,14 @@ class ProductoController {
 
 // constructor
 
-    public function mostrar() {
-        $data['listado'] = null;
-
-        $this->view->show("indexView.php", $data);
-    }
 
 // listar
+   public function inicio() {
+        require 'model/ProductoModel.php';
+        $cliente = new ProductoModel();
+        $data['listado'] = $cliente->mostrar_Producto();
+        $this->view->show("indexView.php", $data);
 
-    public function inicio() {
-        $this->view->show("indexView.php", null);
     }
 
     public function registrar() {
@@ -50,6 +48,7 @@ class ProductoController {
         }
         
     }
+
     public function eliminar() {
         require 'model/ProductoModel.php';
         
@@ -102,6 +101,22 @@ class ProductoController {
     }
     
     
+=======
+    
+    public function buscarProducto() {
+        require 'model/ProductoModel.php';
+        $cliente = new ProductoModel();
+        $data['listado'] = $cliente->mostrar_Producto_Nombre($_POST['Nombre']);
+        $this->view->show("indexView.php", $data);
+    }
+    
+    public function mostrarProducto() {
+        require 'model/ProductoModel.php';
+        $cliente = new ProductoModel();
+        $data['listado'] = $cliente->ver_Producto($_GET['producto']);
+        $this->view->show("mostrarProductoView.php", $data);
+    }
+
 
 }
 
