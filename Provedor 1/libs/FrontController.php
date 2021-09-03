@@ -15,7 +15,7 @@
             if(!empty($_GET['accion']))
                 $nombreAccion=$_GET['accion'];
             else 
-                 $nombreAccion='mostrar';
+                 $nombreAccion='inicio';
             
             $rutaControlador=$config->get('controllerFolder').$controllerName.'.php';
             
