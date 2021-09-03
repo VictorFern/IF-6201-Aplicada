@@ -3,6 +3,7 @@ include_once 'public/header.php';
 ?>
 
 <div class="row">
+
     <?php
     foreach ($vars['listado'] as $item) {
         ?>
