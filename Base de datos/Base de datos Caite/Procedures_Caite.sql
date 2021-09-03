@@ -48,3 +48,41 @@ BEGIN
     ,param_IDC
     );
 END$$
+
+DELIMITER $$
+CREATE PROCEDURE sp_mostrar_producto_nombre(param_PRODUCTO VARCHAR(50))
+BEGIN
+	SELECT
+    P.ID
+    , P.NOMBRE
+    , P.DESCRIPCION
+    , P.PRECIO
+    , P.TALLA
+    , P.COLOR
+    , P.MARCA
+    , P.IMAGEN
+    , C.NOMBRE AS CATEGORIA
+    FROM tb_PRODUCTO P
+    JOIN tb_producto_categoria PC
+		ON P.ID = PC.CODIGOP
+        JOIN tb_categoria C
+			ON C.ID = PC.CODIGOC
+    WHERE P.NOMBRE LIKE CONCAT('%', param_PRODUCTO , '%') and IsDelete!=1;
+END $$
+
+DELIMITER $$
+CREATE PROCEDURE sp_mostrar_producto()
+BEGIN
+	SELECT
+    ID
+    , NOMBRE
+    , DESCRIPCION
+    , PRECIO
+    , TALLA
+    , COLOR
+    , MARCA
+    , IMAGEN
+    FROM tb_PRODUCTO
+    where IsDelete!=1;
+END $$
+CALL sp_mostrar_producto_id(1)

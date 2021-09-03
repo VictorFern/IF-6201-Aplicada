@@ -91,6 +91,12 @@ div#registraAdimin{
     border: 2px solid rgba(6, 105, 116, 0.768);
     border-radius:5%;
 } 
+.fit-image{
+width: 80%;
+object-fit: contain;
+height: 300px; /* only if you want fixed height */
+}
+
 
 form div{
     margin: 0.5em;

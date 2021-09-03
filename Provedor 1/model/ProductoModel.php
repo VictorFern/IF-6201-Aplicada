@@ -21,12 +21,29 @@ class ProductoModel {
     }
     
     public function mostrar_Producto() {
-//        $query = $this->db->prepare("call sp_acabado()");
-//        $query->execute();
-//        $data = $query->fetchAll();
-//        $query->closeCursor();
+        $query = $this->db->prepare("call sp_mostrar_producto()");
+        $query->execute();
+        $data = $query->fetchAll();
+        $query->closeCursor();
         return $data;
     }
+    
+    public function ver_Producto($id) {
+        $query = $this->db->prepare("call sp_mostrar_producto_id(".$id.")");
+        $query->execute();
+        $data = $query->fetchAll();
+        $query->closeCursor();
+        return $data;
+    }
+    
+    public function mostrar_Producto_Nombre($nombre) {
+        $query = $this->db->prepare("call sp_mostrar_producto_nombre('".$nombre."')");
+        $query->execute();
+        $data = $query->fetchAll();
+        $query->closeCursor();
+        return $data;
+    }
+    
     public function mostrar_Categorias() {
         $query = $this->db->prepare("call sp_categorias()");
         $query->execute();
