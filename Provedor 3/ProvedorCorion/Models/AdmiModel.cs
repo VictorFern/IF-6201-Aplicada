@@ -11,7 +11,15 @@ namespace ProvedorCorion.Models
         public string Pass { get; set; }
         public AdmiModel()
         {
-
+            this.Id = 0;
+            this.Nombre = "";
+            this.Pass = "";
+        }
+        public AdmiModel(int id, string nombre, string pass)
+        {
+            this.Id = id;
+            this.Nombre = nombre;
+            this.Pass = pass;
         }
     }
 }
