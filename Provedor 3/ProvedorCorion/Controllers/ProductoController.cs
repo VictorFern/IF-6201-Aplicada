@@ -43,5 +43,37 @@ namespace ProvedorCorion.Controllers
             }
             return View("Index");
         }
+        public IActionResult Listar()
+        {
+            List<ProductoModel> productos = new List<ProductoModel>();
+            if (ModelState.IsValid)
+            {
+                string connectionString = Configuration["ConnectionStrings:DB_Connection_Turrialba"];
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string sqlQuery = $"exec sp_get_allproducts";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        connection.Open();
+                        SqlDataReader productosReader = command.ExecuteReader();
+                        while (productosReader.Read())
+                        {
+                            ProductoModel temp = new ProductoModel();
+                            temp.Id = Int32.Parse(productosReader["ID"].ToString());
+                            temp.Nombre = productosReader["NOMBRE"].ToString();
+                            temp.Marca = productosReader["MARCA"].ToString();
+                            temp.Precio = Int32.Parse(productosReader["PRECIO"].ToString());
+                            temp.Dimensiones = productosReader["DIMENSIONES"].ToString();
+                            temp.Descripcion = productosReader["DESCRIPCION"].ToString();
+                            productos.Add(temp);
+                        } // while
+                        connection.Close();
+                    }
+                }
+            }
+            ViewBag.Productos = productos;
+            return View();
+        }
     }
 }
