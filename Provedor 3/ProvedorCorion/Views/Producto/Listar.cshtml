@@ -1,0 +1,36 @@
+﻿@model ProvedorCorion.Models.ProductoModel
+@{
+    ViewData["Title"] = "Ver Productos";
+}
+<form asp-action="Update" method="post">
+    <div id="info" class="text-center">
+
+    </div>
+</form>
+<table class="table table-light table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Marca</th>
+        <th>Precio</th>
+        <th>Dimensiones</th>
+        <th>Descripcion</th>
+        <th>Acciones</th>
+    </tr>
+    @foreach (ProductoModel temp in ViewBag.Productos)
+    {
+        <tr>
+            <td>@temp.Id</td>
+            <td>@temp.Nombre</td>
+            <td>@temp.Marca</td>
+            <td>@temp.Precio</td>
+            <td>@temp.Dimensiones</td>
+            <td>@temp.Descripcion</td>
+            <td>
+                <a type="button" href="javascript:;" onclick="actualizarProducto(@temp.Id); return false;">Actualizar</a>
+                |
+                <a type="button" href="javascript:;" onclick="eliminarProducto(@temp.Id); return false;">Eliminar</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,34 @@
+﻿@model ProvedorCorion.Models.ProductoModel
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<form asp-action="Registrar" method="post">
+    <div class="row mx-4 mt-3">
+        <div class="col-md-4 text-center">
+            <label for="inputEmail4" class="form-label">Nombre</label>
+            <input asp-for="Nombre" type="text" class="form-control text-center" required id="Nombre" name="Nombre" placeholder="Nombre del producto">
+        </div>
+        <div class="col-md-4 text-center">
+            <label for="inputEmail4" class="form-label">Marca</label>
+            <input asp-for="Marca" type="text" class="form-control text-center" required id="Marca" name="Marca" placeholder="Marca del producto">
+        </div>
+        <div class="col-md-4 text-center">
+            <label for="inputEmail4" class="form-label">Precio</label>
+            <input asp-for="Precio" type="text" class="form-control text-center" required id="Precio" name="Precio" placeholder="Precio del producto">
+        </div>
+    </div>
+    <div class="row mx-4 mt-3">
+        <div class="col-md-6 text-center">
+            <label for="inputEmail4" class="form-label">Dimensiones</label>
+            <input asp-for="Dimensiones" type="text" class="form-control text-center" required id="Dimensiones" name="Dimensiones" placeholder="Dimensiones del producto">
+        </div>
+        <div class="col-md-6 text-center">
+            <label for="inputEmail4" class="form-label">Descripcion</label>
+            <input asp-for="Descripcion" type="text" class="form-control text-center" required id="Descripcion" name="Descripcion" placeholder="Descripcion del producto">
+        </div>
+    </div>
+    <div class="col-12 w-auto mx-3 text-center my-3">
+        <button type="submit" class="btn btn-primary text-center mt-3">Registrar</button>
+    </div>
+</form>
