@@ -6,6 +6,32 @@
     <title>@ViewData["Title"] - ProvedorCorion</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script>
+        function eliminarProducto(idProducto) {
+            var parametros = { "Id": idProducto };
+            $.ajax(
+                {
+                    data: parametros,
+                    url: '/Producto/EliminarProducto',
+                    type: 'post',
+                    success: function (response) {
+                        location.reload();
+                    }
+                });
+        }
+        function actualizarProducto(idProducto) {
+            var parametros = { "Id": idProducto };
+            $.ajax(
+                {
+                    data: parametros,
+                    url: '/Producto/ActualizarProducto',
+                    type: 'post',
+                    success: function (response) {
+                        $('#info').html(response);
+                    }
+                });
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -55,5 +81,5 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+    </body>
 </html>
