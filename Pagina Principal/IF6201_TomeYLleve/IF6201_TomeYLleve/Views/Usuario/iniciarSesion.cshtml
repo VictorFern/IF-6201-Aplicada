@@ -1,0 +1,29 @@
+﻿@model IF6201_TomeYLleve.Models.UsuarioModel
+@{
+    ViewData["Title"] = "IniciarSesion";
+    Layout = "_Layout";
+}
+<CENTER>
+    <div content="width=device-widt" class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <form id="iniciaSesion" asp-action="IniciarSesion" method="POST">
+                <h1>Iniciar Sesión</h1>
+                <input type="text" style=" margin-bottom: 15px;" class="form-control" asp-for="alias" placeholder="Nombre de usuario" required />
+                
+                <input type="password" style="margin-bottom: 15px;" class="form-control" asp-for="pass" placeholder="Contraseña" required />
+
+                <button type="submit" class="btn btn-success">Iniciar Sesión</button>
+                @if (ViewData["Error"] != null)
+                {
+                    <div class="red">
+                        <script>alert("Datos incorrectos")</script>
+
+                    </div>
+                }
+            </form>
+        </div>
+        <div class="col-sm-3"></div>
+        <br>
+    </div>
+</CENTER>

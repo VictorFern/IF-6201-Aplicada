@@ -48,8 +48,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="?controlador=Producto&accion=eliminar">Eliminar Producto</a>
                     </li>
-                    <form class="d-flex">
-
                      
                     <form class="d-flex" name="buscar" action="?controlador=Producto&accion=buscarProducto" method="post">
                         <input

@@ -1,0 +1,40 @@
+CREATE PROCEDURE sp_registrarCliente(@param_CEDULA INT, 
+									 @param_NOMBRE VARCHAR(50), 
+									 @param_APELLIDO VARCHAR(50), 
+									 @param_ALIAS VARCHAR(50), 
+									 @param_CONTRASENNA VARCHAR(50))
+AS 
+BEGIN
+	INSERT INTO [USUARIO].[tb_USUARIO](
+	[CEDULA]
+	, [NOMBRE]
+	, [APELLIDO]
+	, [ALIAS]
+	, [CONTRASENNA]
+	, [IDCREDIT]
+	, [TIPO]
+	)VALUES(
+	@param_CEDULA
+	,@param_NOMBRE
+	,@param_APELLIDO
+	,@param_ALIAS
+	,@param_CONTRASENNA
+	,NULL
+	,'Cliente'
+	)
+END
+GO
+
+select * from [USUARIO].[tb_USUARIO]
+GO
+CREATE PROCEDURE sp_iniciarSesion(@param_ALIAS VARCHAR(50), @param_CONTRASENNA VARCHAR(50))
+AS 
+BEGIN
+	SELECT
+	U.CEDULA
+	,U.ALIAS
+	,U.TIPO
+	FROM USUARIO.tb_USUARIO U
+	WHERE U.ALIAS = @param_ALIAS AND U.CONTRASENNA = @param_CONTRASENNA
+END
+GO
