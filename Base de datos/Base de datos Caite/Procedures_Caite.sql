@@ -69,7 +69,7 @@ BEGIN
 			ON C.ID = PC.CODIGOC
     WHERE P.NOMBRE LIKE CONCAT('%', param_PRODUCTO , '%') and IsDelete!=1;
 END $$
-
+call sp_mostrar_producto_nombre('Nike')
 DELIMITER $$
 CREATE PROCEDURE sp_mostrar_producto()
 BEGIN
