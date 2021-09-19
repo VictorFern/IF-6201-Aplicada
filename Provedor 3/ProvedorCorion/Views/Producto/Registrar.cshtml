@@ -3,7 +3,7 @@
     ViewData["Title"] = "Registrar";
 }
 
-<form asp-action="Registrar" method="post">
+<form asp-action="Registrar" method="post" enctype="multipart/form-data">
     <div class="row mx-4 mt-3">
         <div class="col-md-4 text-center">
             <label for="inputEmail4" class="form-label">Nombre</label>
@@ -19,13 +19,18 @@
         </div>
     </div>
     <div class="row mx-4 mt-3">
-        <div class="col-md-6 text-center">
+        <div class="col-md-4 text-center">
             <label for="inputEmail4" class="form-label">Dimensiones</label>
             <input asp-for="Dimensiones" type="text" class="form-control text-center" required id="Dimensiones" name="Dimensiones" placeholder="Dimensiones del producto">
         </div>
-        <div class="col-md-6 text-center">
+        <div class="col-md-4 text-center">
             <label for="inputEmail4" class="form-label">Descripcion</label>
             <input asp-for="Descripcion" type="text" class="form-control text-center" required id="Descripcion" name="Descripcion" placeholder="Descripcion del producto">
+        </div>
+        <div class="col-md-4 text-center">
+            <label for="inputEmail4" class="form-label">Imagen</label>
+            <input type="file" asp-for="Image" name="files" class="form-control" accept="image/png, .jpeg, .jpg, image/gif" id="imagen" name="imagen">
+            <span asp-validation-for="Image" class="text-danger"></span>
         </div>
     </div>
     <div class="col-12 w-auto mx-3 text-center my-3">

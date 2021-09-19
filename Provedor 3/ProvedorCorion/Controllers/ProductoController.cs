@@ -5,17 +5,21 @@ using ProvedorCorion.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ProvedorCorion.Controllers
 {
     public class ProductoController : Controller
     {
         public IConfiguration Configuration { get; set; }
-        public ProductoController(IConfiguration configuration)
+        private readonly IHostingEnvironment _webhost;
+        public ProductoController(IConfiguration configuration, IHostingEnvironment webhost)
         {
             Configuration = configuration;
+            _webhost = webhost;
         }
         public IActionResult Registrar()
         {
@@ -24,15 +28,64 @@ namespace ProvedorCorion.Controllers
         [HttpPost]
         public IActionResult Registrar(ProductoModel productoModel)
         {
+            var newFileName = string.Empty;
+            var fileName = "";
+            Console.WriteLine("antes del if de !=null");
+            if (HttpContext.Request.Form.Files != null)
+            {
+                Console.WriteLine("entro en el if");
+                Console.WriteLine(productoModel.Image);
+                fileName = string.Empty;
+                string PathDB = string.Empty;
+
+                var files = HttpContext.Request.Form.Files;
+                Console.WriteLine(HttpContext.Request.Form.Files.Count);
+
+                foreach (var file in files)
+                {
+                    Console.WriteLine("entro al foreach");
+                    if (file.Length > 0)
+                    {
+                        Console.WriteLine("entro al if de length");
+                        //Getting FileName
+                        fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+
+                        //Assigning Unique Filename (Guid)
+                        var myUniqueFileName = Convert.ToString(Guid.NewGuid());
+
+                        //Getting file Extension
+                        var FileExtension = Path.GetExtension(fileName);
+
+                        // concating  FileName + FileExtension
+                        newFileName = myUniqueFileName + FileExtension;
+
+                        // Combines two strings into a path.
+                        fileName = Path.Combine(_webhost.WebRootPath, "img") + $@"\{newFileName}";
+
+                        // if you want to store path of folder in database
+                        PathDB = "img/" + newFileName;
+
+                        using (FileStream fs = System.IO.File.Create(fileName))
+                        {
+                            Console.WriteLine("entro al using");
+                            file.CopyTo(fs);
+                            fs.Flush();
+                        }
+                    }
+                }
+            }
             if (ModelState.IsValid)
             {
+                Console.WriteLine("lo que se guardara en la bd: ");
+                Console.WriteLine(newFileName);
                 string conexionString = Configuration["ConnectionStrings:DB_Connection_Turrialba"];
                 var connection = new SqlConnection(conexionString);
 
                 string sqlQuery = $"exec sp_insert_product @param_NOMBRE = '{productoModel.Nombre}', " +
                     $"@param_MARCA = '{productoModel.Marca}', " +
                     $"@param_PRECIO = '{productoModel.Precio}', " +
-                    $"@param_DIMENSIONES = '{productoModel.Dimensiones}', @param_DESCRIPCION = '{productoModel.Descripcion}'";
+                    $"@param_DIMENSIONES = '{productoModel.Dimensiones}', " +
+                    $"@param_DESCRIPCION = '{productoModel.Descripcion}', @param_PIMAGE = '{newFileName}'";
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                 {
                     command.CommandType = CommandType.Text;
@@ -66,6 +119,7 @@ namespace ProvedorCorion.Controllers
                             temp.Precio = Int32.Parse(productosReader["PRECIO"].ToString());
                             temp.Dimensiones = productosReader["DIMENSIONES"].ToString();
                             temp.Descripcion = productosReader["DESCRIPCION"].ToString();
+                            temp.Image = productosReader["PIMAGE"].ToString();
                             productos.Add(temp);
                         } // while
                         connection.Close();

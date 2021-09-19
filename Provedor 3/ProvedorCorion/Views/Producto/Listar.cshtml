@@ -15,22 +15,24 @@
         <th>Precio</th>
         <th>Dimensiones</th>
         <th>Descripcion</th>
+        <th>Imagen</th>
         <th>Acciones</th>
     </tr>
     @foreach (ProductoModel temp in ViewBag.Productos)
     {
-        <tr>
-            <td>@temp.Id</td>
-            <td>@temp.Nombre</td>
-            <td>@temp.Marca</td>
-            <td>@temp.Precio</td>
-            <td>@temp.Dimensiones</td>
-            <td>@temp.Descripcion</td>
-            <td>
-                <a type="button" href="javascript:;" onclick="actualizarProducto(@temp.Id); return false;">Actualizar</a>
-                |
-                <a type="button" href="javascript:;" onclick="eliminarProducto(@temp.Id); return false;">Eliminar</a>
-            </td>
-        </tr>
+<tr>
+    <td>@temp.Id</td>
+    <td>@temp.Nombre</td>
+    <td>@temp.Marca</td>
+    <td>@temp.Precio</td>
+    <td>@temp.Dimensiones</td>
+    <td>@temp.Descripcion</td>
+    <td><img class="img-rounded img-hover mg-3" src="~/img/@temp.Image" width="190" height="190"></td>
+    <td>
+        <a type="button" href="javascript:;" onclick="actualizarProducto(@temp.Id); return false;">Actualizar</a>
+        |
+        <a type="button" href="javascript:;" onclick="eliminarProducto(@temp.Id); return false;">Eliminar</a>
+    </td>
+</tr>
     }
 </table>

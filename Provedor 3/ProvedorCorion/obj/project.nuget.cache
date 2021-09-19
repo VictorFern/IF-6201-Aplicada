@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nYqeVSxbre2gEWKkKMQzv6EIo+1abfDk0sUK6j5LtBwyQil5N/V0Fdl+LIkcrkgDTsmB9P2K/4bTyUDaPn2PWg==",
+  "dgSpecHash": "Iz5+Qot88wVxFjllUN1F9vxnmSm6wPPsyZuxT7uGE1madfrMrYHZG/zIqLo8LpCebwCo2J4rErVtiy2svh0m9g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rivai\\Documents\\UCR\\Ciclo II 2021\\Aplicada\\ProvedorCorion-main\\Proyecto\\ProvedorCorion\\ProvedorCorion.csproj",
+  "projectFilePath": "C:\\Users\\rivai\\Documents\\GitHub\\ProvedorCorion\\ProvedorCorion\\ProvedorCorion.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rivai\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\rivai\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
