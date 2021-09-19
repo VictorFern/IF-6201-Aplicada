@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rivai\\Documents\\UCR\\Ciclo II 2021\\Aplicada\\ProvedorCorion-main\\Proyecto\\ProvedorCorion\\ProvedorCorion.csproj": {}
+    "C:\\Users\\rivai\\Documents\\GitHub\\ProvedorCorion\\ProvedorCorion\\ProvedorCorion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rivai\\Documents\\UCR\\Ciclo II 2021\\Aplicada\\ProvedorCorion-main\\Proyecto\\ProvedorCorion\\ProvedorCorion.csproj": {
+    "C:\\Users\\rivai\\Documents\\GitHub\\ProvedorCorion\\ProvedorCorion\\ProvedorCorion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rivai\\Documents\\UCR\\Ciclo II 2021\\Aplicada\\ProvedorCorion-main\\Proyecto\\ProvedorCorion\\ProvedorCorion.csproj",
+        "projectUniqueName": "C:\\Users\\rivai\\Documents\\GitHub\\ProvedorCorion\\ProvedorCorion\\ProvedorCorion.csproj",
         "projectName": "ProvedorCorion",
-        "projectPath": "C:\\Users\\rivai\\Documents\\UCR\\Ciclo II 2021\\Aplicada\\ProvedorCorion-main\\Proyecto\\ProvedorCorion\\ProvedorCorion.csproj",
+        "projectPath": "C:\\Users\\rivai\\Documents\\GitHub\\ProvedorCorion\\ProvedorCorion\\ProvedorCorion.csproj",
         "packagesPath": "C:\\Users\\rivai\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rivai\\Documents\\UCR\\Ciclo II 2021\\Aplicada\\ProvedorCorion-main\\Proyecto\\ProvedorCorion\\obj\\",
+        "outputPath": "C:\\Users\\rivai\\Documents\\GitHub\\ProvedorCorion\\ProvedorCorion\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

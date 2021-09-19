@@ -12,6 +12,7 @@ namespace ProvedorCorion.Models
         public int Precio { get; set; }
         public string Dimensiones { get; set; }
         public string Descripcion { get; set; }
+        public string Image { get; set; }
         public ProductoModel()
         {
 
