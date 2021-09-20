@@ -1,12 +1,11 @@
 ﻿@model IF6201_TomeYLleve.Models.ProductoModel
 @{
-    ViewData["Title"] = "Cliente";
-    Layout = "_LayoutCLiente";
+    ViewData["Title"] = "Buscar Producto";
+    Layout = "_LayoutCliente";
 }
-
 <div class="container">
     <div class="row">
-        @foreach (ProductoModel tem in ViewBag.Producto)
+        @foreach (ProductoModel tem in ViewBag.Lista)
         {
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="box-part text-center">

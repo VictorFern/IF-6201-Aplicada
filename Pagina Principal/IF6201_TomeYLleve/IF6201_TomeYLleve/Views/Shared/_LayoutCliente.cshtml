@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Producto" asp-action="Index">IF6201_TomeYLleve</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Cliente" asp-action="Index">IF6201_TomeYLleve</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,13 +24,13 @@
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-dark active" asp-area="" asp-controller="Producto" asp-action="Index">Inicio</a>
+                            <a class="nav-link text-dark active" asp-area="" asp-controller="Cliente" asp-action="Index">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="vercarrito">Carrito</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="vercarrito">Carrito</a>
                         </li>
                         <form class="form-inline my-2 my-lg-0" name="buscar" asp-action="buscar" method="post">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Buscar producto" aria-label="Search" />
+                            <input class="form-control mr-sm-2" type="search" id="nombre" name="nombre" placeholder="Buscar producto" aria-label="Search" />
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                                 Buscar
                             </button>

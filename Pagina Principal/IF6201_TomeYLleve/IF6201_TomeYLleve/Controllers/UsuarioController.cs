@@ -66,7 +66,7 @@ namespace IF6201_TomeYLleve.Controllers
                 else
                 {
                     usuarios.Clear();
-                    return RedirectToAction("Index", "Producto");
+                    return RedirectToAction("Index", "Cliente");
                 }
 
             }

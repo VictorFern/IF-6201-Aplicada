@@ -22,6 +22,46 @@ namespace IF6201_TomeYLleve.Controllers
 
         public IActionResult Index()
         {
+            List<object> lista = new List<object>();
+            if (ModelState.IsValid)
+            {
+                string connectioString = Configuration["ConnectionStrings:DB_Connection"];
+                using (SqlConnection connection = new SqlConnection(connectioString))
+                {
+                    string sqlQuery = $"sp_mostrarProducto";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        connection.Open();
+                        SqlDataReader productoReader = command.ExecuteReader();
+                        while (productoReader.Read())
+                        {
+                            CategoriaModel categoriaModel = new CategoriaModel();
+                            categoriaModel.categoria = productoReader["CATEGORIA"].ToString();
+                            ProveedorModel proveedorModel = new ProveedorModel();
+                            proveedorModel.proveedor = productoReader["PROVEEDOR"].ToString();
+                            ProductoModel productoTemp = new ProductoModel(Int32.Parse(productoReader["IDP"].ToString())
+                                                                           , productoReader["NOMBREP"].ToString()
+                                                                           , productoReader["MARCA"].ToString()
+                                                                           , productoReader["DESCRIPCION"].ToString()
+                                                                           , Int32.Parse(productoReader["PRECIO"].ToString())
+                                                                           , productoReader["DIMENSION"].ToString()
+                                                                           , productoReader["OTRASCARACTERISTICAS"].ToString()
+                                                                           , productoReader["FOTO"].ToString()
+                                                                           , Int32.Parse(productoReader["CANTIDAD"].ToString())
+                                                                           , categoriaModel
+                                                                           , proveedorModel);
+                            lista.Add(productoTemp);
+                        }
+                        connection.Close();
+                    }
+                }
+            }
+            ViewBag.Producto = lista;
+            return View();
+        }
+        public IActionResult registrar()
+        {
             return View();
         }
         [HttpPost]
@@ -42,6 +82,87 @@ namespace IF6201_TomeYLleve.Controllers
                 TempData["Success"] = "Se registró correctamente.";
                 return RedirectToAction("Index");
             }
+            return View();
+        }
+        public IActionResult buscar(ProductoModel productoModel)
+        {
+            List<object> lista = new List<object>();
+            if (ModelState.IsValid)
+            {
+                string connectioString = Configuration["ConnectionStrings:DB_Connection"];
+                using (SqlConnection connection = new SqlConnection(connectioString))
+                {
+                    string sqlQuery = $"sp_listaProducto @param_NOMBREP='{productoModel.nombre}'";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        connection.Open();
+                        SqlDataReader productoReader = command.ExecuteReader();
+                        while (productoReader.Read())
+                        {
+                            CategoriaModel categoriaModel = new CategoriaModel();
+                            categoriaModel.categoria = productoReader["CATEGORIA"].ToString();
+                            ProveedorModel proveedorModel = new ProveedorModel();
+                            proveedorModel.proveedor = productoReader["PROVEEDOR"].ToString();
+                            ProductoModel productoTemp = new ProductoModel(Int32.Parse(productoReader["IDP"].ToString())
+                                                                           , productoReader["NOMBREP"].ToString()
+                                                                           , productoReader["MARCA"].ToString()
+                                                                           , productoReader["DESCRIPCION"].ToString()
+                                                                           , Int32.Parse(productoReader["PRECIO"].ToString())
+                                                                           , productoReader["DIMENSION"].ToString()
+                                                                           , productoReader["OTRASCARACTERISTICAS"].ToString()
+                                                                           , productoReader["FOTO"].ToString()
+                                                                           , Int32.Parse(productoReader["CANTIDAD"].ToString())
+                                                                           , categoriaModel
+                                                                           , proveedorModel);
+                            lista.Add(productoTemp);
+                        }
+                        connection.Close();
+                    }
+                }
+            }
+            ViewBag.Lista = lista;
+            return View();
+        }
+
+        public IActionResult producto(ProductoModel productoModel)
+        {
+            List<object> lista = new List<object>();
+            if (ModelState.IsValid)
+            {
+                string connectioString = Configuration["ConnectionStrings:DB_Connection"];
+                using (SqlConnection connection = new SqlConnection(connectioString))
+                {
+                    string sqlQuery = $"sp_detalleProducto @param_ID='{productoModel.id}'";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        connection.Open();
+                        SqlDataReader productoReader = command.ExecuteReader();
+                        while (productoReader.Read())
+                        {
+                            CategoriaModel categoriaModel = new CategoriaModel();
+                            categoriaModel.categoria = productoReader["CATEGORIA"].ToString();
+                            ProveedorModel proveedorModel = new ProveedorModel();
+                            proveedorModel.proveedor = productoReader["PROVEEDOR"].ToString();
+                            ProductoModel productoTemp = new ProductoModel(Int32.Parse(productoReader["IDP"].ToString())
+                                                                           , productoReader["NOMBREP"].ToString()
+                                                                           , productoReader["MARCA"].ToString()
+                                                                           , productoReader["DESCRIPCION"].ToString()
+                                                                           , Int32.Parse(productoReader["PRECIO"].ToString())
+                                                                           , productoReader["DIMENSION"].ToString()
+                                                                           , productoReader["OTRASCARACTERISTICAS"].ToString()
+                                                                           , productoReader["FOTO"].ToString()
+                                                                           , Int32.Parse(productoReader["CANTIDAD"].ToString())
+                                                                           , categoriaModel
+                                                                           , proveedorModel);
+                            lista.Add(productoTemp);
+                        }
+                        connection.Close();
+                    }
+                }
+            }
+            ViewBag.Detalle = lista;
             return View();
         }
     }
