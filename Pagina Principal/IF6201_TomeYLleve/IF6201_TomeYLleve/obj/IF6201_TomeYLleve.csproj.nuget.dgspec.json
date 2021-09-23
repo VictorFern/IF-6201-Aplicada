@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gmg55\\source\\repos\\IF6201_TomeYLleve\\IF6201_TomeYLleve\\IF6201_TomeYLleve.csproj": {}
+    "C:\\Program Files (x86)\\EasyPHP-Devserver-17\\eds-www\\IF-6201-Aplicada\\IF-6201-Aplicada\\Pagina Principal\\IF6201_TomeYLleve\\IF6201_TomeYLleve\\IF6201_TomeYLleve.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gmg55\\source\\repos\\IF6201_TomeYLleve\\IF6201_TomeYLleve\\IF6201_TomeYLleve.csproj": {
+    "C:\\Program Files (x86)\\EasyPHP-Devserver-17\\eds-www\\IF-6201-Aplicada\\IF-6201-Aplicada\\Pagina Principal\\IF6201_TomeYLleve\\IF6201_TomeYLleve\\IF6201_TomeYLleve.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gmg55\\source\\repos\\IF6201_TomeYLleve\\IF6201_TomeYLleve\\IF6201_TomeYLleve.csproj",
+        "projectUniqueName": "C:\\Program Files (x86)\\EasyPHP-Devserver-17\\eds-www\\IF-6201-Aplicada\\IF-6201-Aplicada\\Pagina Principal\\IF6201_TomeYLleve\\IF6201_TomeYLleve\\IF6201_TomeYLleve.csproj",
         "projectName": "IF6201_TomeYLleve",
-        "projectPath": "C:\\Users\\gmg55\\source\\repos\\IF6201_TomeYLleve\\IF6201_TomeYLleve\\IF6201_TomeYLleve.csproj",
+        "projectPath": "C:\\Program Files (x86)\\EasyPHP-Devserver-17\\eds-www\\IF-6201-Aplicada\\IF-6201-Aplicada\\Pagina Principal\\IF6201_TomeYLleve\\IF6201_TomeYLleve\\IF6201_TomeYLleve.csproj",
         "packagesPath": "C:\\Users\\gmg55\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gmg55\\source\\repos\\IF6201_TomeYLleve\\IF6201_TomeYLleve\\obj\\",
+        "outputPath": "C:\\Program Files (x86)\\EasyPHP-Devserver-17\\eds-www\\IF-6201-Aplicada\\IF-6201-Aplicada\\Pagina Principal\\IF6201_TomeYLleve\\IF6201_TomeYLleve\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gmg55\\AppData\\Roaming\\NuGet\\NuGet.Config",

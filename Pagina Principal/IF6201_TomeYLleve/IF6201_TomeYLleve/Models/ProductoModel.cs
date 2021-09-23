@@ -7,40 +7,59 @@ namespace IF6201_TomeYLleve.Models
 {
     public class ProductoModel
     {
+        public int id { get; set; }
         public string nombre { get; set; }
+        public string marca { get; set; }
         public string descripcion { get; set; }
         public int precio { get; set; }
         public string dimension { get; set; }
         public string otrascaracteristicas { get; set; }
         public string foto { get; set; }
         public int cantidad { get; set; }
-        public int categoria { get; set; }
-        public int proveedor { get; set; }
+        public CategoriaModel categoriaModel { get; set; }
+        public ProveedorModel proveedorModel { get; set; }
 
         public ProductoModel()
         {
+            this.id = 0;
             this.nombre = "";
+            this.marca = "";
             this.descripcion = "";
             this.precio = 0;
             this.dimension = "";
             this.otrascaracteristicas = "";
             this.foto = "";
             this.cantidad = 0;
-            this.categoria = 0;
-            this.proveedor = 0;
+            this.categoriaModel = null;
+            this.proveedorModel = null;
         }
 
-        public ProductoModel(string nombre, string descripcion, int precio, string dimension, string otrascaracteristicas, string foto, int cantidad, int categoria, int proveedor)
+        public ProductoModel(string nombre, string marca, string descripcion, int precio, string dimension, string otrascaracteristicas, string foto, int cantidad, CategoriaModel categoriaModel, ProveedorModel proveedorModel)
         {
             this.nombre = nombre;
+            this.marca = marca;
             this.descripcion = descripcion;
             this.precio = precio;
             this.dimension = dimension;
             this.otrascaracteristicas = otrascaracteristicas;
             this.foto = foto;
             this.cantidad = cantidad;
-            this.categoria = categoria;
-            this.proveedor = proveedor;
+            this.categoriaModel = categoriaModel;
+            this.proveedorModel = proveedorModel;
+        }
+        public ProductoModel(int id, string nombre, string marca, string descripcion, int precio, string dimension, string otrascaracteristicas, string foto, int cantidad, CategoriaModel categoriaModel, ProveedorModel proveedorModel)
+        {
+            this.id = id;
+            this.nombre = nombre;
+            this.marca = marca;
+            this.descripcion = descripcion;
+            this.precio = precio;
+            this.dimension = dimension;
+            this.otrascaracteristicas = otrascaracteristicas;
+            this.foto = foto;
+            this.cantidad = cantidad;
+            this.categoriaModel = categoriaModel;
+            this.proveedorModel = proveedorModel;
         }
     }
 }

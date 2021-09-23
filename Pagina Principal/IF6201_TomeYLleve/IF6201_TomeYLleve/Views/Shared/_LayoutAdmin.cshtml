@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -11,6 +12,7 @@
           asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
           asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -36,7 +38,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="eliminar">Eliminar Producto</a>
                         </li>
                         <form class="form-inline my-2 my-lg-0" name="buscar" asp-action="buscar" method="post">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Buscar producto" aria-label="Search"/>
+                            <input class="form-control mr-sm-2" id="nombre" name="nombre" type="search" placeholder="Buscar producto" aria-label="Search" required/>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                                 Buscar
                             </button>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IbaRanrJ7i6GUxtUHwI8do1SIEPWOl2DDlu+NwbEQg511U1NxmTjnXVRv1Rsp+2+G5guyr/XPD+DciuPiGBHsQ==",
+  "dgSpecHash": "VWPfWpZ/kSm1hUCpEOftyU0rfFzFPCq+whKcIiwoqeI5U62oaYsw3z5+fqBlovCFy5BZ2nf1khJZZsA9S1pjhw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gmg55\\source\\repos\\IF6201_TomeYLleve\\IF6201_TomeYLleve\\IF6201_TomeYLleve.csproj",
+  "projectFilePath": "C:\\Program Files (x86)\\EasyPHP-Devserver-17\\eds-www\\IF-6201-Aplicada\\IF-6201-Aplicada\\Pagina Principal\\IF6201_TomeYLleve\\IF6201_TomeYLleve\\IF6201_TomeYLleve.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gmg55\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\gmg55\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
