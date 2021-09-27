@@ -6,3 +6,8 @@
     <h1 class="display-4">Bienvenido a CORION</h1>
     <p>Ferreteria con la mejor calidad y precios</p>
 </div>
+
+@if (ViewData["Mensaje"] != null)
+{
+    <script language='javascript' type='text/javascript'>window.alert("Debes de iniciar sesion");</script>
+}
