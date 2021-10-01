@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ProvedorCorion.Controllers
 {
@@ -23,7 +24,28 @@ namespace ProvedorCorion.Controllers
         }
         public IActionResult Registrar()
         {
-            return View();
+            if (HttpContext.Session.GetInt32("login") is null)
+            {
+                ViewData["Mensaje"] = "Debes de iniciar sesion para continuar";
+                return View("Index");
+            }
+            else
+            {
+                List<CategoriaModel> categoriaList = ListarCategorias();
+                List<SelectListItem> selectListItems = categoriaList.ConvertAll(category =>
+                {
+                    return new SelectListItem()
+                    {
+                        Text = category.Nombre.ToString(),
+                        Value = category.Id.ToString(),
+                        Selected = false
+                    };
+                });
+
+
+                ViewBag.Categorias = selectListItems;
+                return View();
+            }
         }
         [HttpPost]
         public IActionResult Registrar(ProductoModel productoModel)
@@ -76,8 +98,6 @@ namespace ProvedorCorion.Controllers
             }
             if (ModelState.IsValid)
             {
-                Console.WriteLine("lo que se guardara en la bd: ");
-                Console.WriteLine(newFileName);
                 string conexionString = Configuration["ConnectionStrings:DB_Connection_Turrialba"];
                 var connection = new SqlConnection(conexionString);
 
@@ -85,7 +105,9 @@ namespace ProvedorCorion.Controllers
                     $"@param_MARCA = '{productoModel.Marca}', " +
                     $"@param_PRECIO = '{productoModel.Precio}', " +
                     $"@param_DIMENSIONES = '{productoModel.Dimensiones}', " +
-                    $"@param_DESCRIPCION = '{productoModel.Descripcion}', @param_PIMAGE = '{newFileName}'";
+                    $"@param_DESCRIPCION = '{productoModel.Descripcion}', " +
+                    $"@param_PIMAGE = '{newFileName}'," +
+                    $"@param_CATEGORIA = '{Convert.ToInt32(Request.Form["listaCategorias"].ToString())}'";
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                 {
                     command.CommandType = CommandType.Text;
@@ -95,6 +117,35 @@ namespace ProvedorCorion.Controllers
                 };
             }
             return View("Index");
+        }
+        private List<CategoriaModel> ListarCategorias()
+        {
+            List<CategoriaModel> categorias = new List<CategoriaModel>();
+            if (ModelState.IsValid)
+            {
+                string conexionString = Configuration["ConnectionStrings:DB_Connection_Turrialba"];
+                //var connection = new SqlConnection(conexionString);
+                using (SqlConnection connection = new SqlConnection(conexionString))
+                {
+                    string sqlQuery = $"exec sp_get_all_categories";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        connection.Open();
+                        SqlDataReader sqlDataReader = command.ExecuteReader();
+                        while (sqlDataReader.Read())
+                        {
+                            CategoriaModel categoriaModel = new CategoriaModel();
+                            categoriaModel.Id = Int32.Parse(sqlDataReader["ID"].ToString());
+                            categoriaModel.Nombre = sqlDataReader["NOMBRE"].ToString();
+                            categorias.Add(categoriaModel);
+                        }
+                        connection.Close();
+                    }
+                }
+                return categorias;
+            }
+            return categorias;
         }
         public IActionResult Listar()
         {
@@ -116,6 +167,7 @@ namespace ProvedorCorion.Controllers
                             temp.Id = Int32.Parse(productosReader["ID"].ToString());
                             temp.Nombre = productosReader["NOMBRE"].ToString();
                             temp.Marca = productosReader["MARCA"].ToString();
+                            temp.Categoria = productosReader["CATEGORIA"].ToString();
                             temp.Precio = Int32.Parse(productosReader["PRECIO"].ToString());
                             temp.Dimensiones = productosReader["DIMENSIONES"].ToString();
                             temp.Descripcion = productosReader["DESCRIPCION"].ToString();

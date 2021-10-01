@@ -40,13 +40,12 @@ namespace ProvedorCorion.Controllers
                 SqlDataReader admiReader = command.ExecuteReader();
                 if (admiReader.Read())
                 {
-                    //aqui hay que guardar el admi que inicio si mal no recuerdo es con un session
+                    HttpContext.Session.SetInt32("login", 1);
                     connection.Close();
                     return View("Index");
                 }
                 else
                 {
-                    //esto es en caso de que no encuentre a ningun admi con ese usuario y contrasenna
                     connection.Close();
                     return View();
                 }
