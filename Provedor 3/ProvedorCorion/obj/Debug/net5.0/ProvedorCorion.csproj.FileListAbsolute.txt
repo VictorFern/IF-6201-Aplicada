@@ -87,7 +87,6 @@ C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\obj\Debug\net5.0\P
 C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\obj\Debug\net5.0\ProvedorCorion.RazorCoreGenerate.cache
 C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\obj\Debug\net5.0\Razor\Views\Admi\Login.cshtml.g.cs
 C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
-C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\obj\Debug\net5.0\Razor\Views\Producto\Listar.cshtml.g.cs
 C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\obj\Debug\net5.0\Razor\Views\Producto\Registrar.cshtml.g.cs
 C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\obj\Debug\net5.0\Razor\Views\Shared\Index.cshtml.g.cs
@@ -144,3 +143,4 @@ C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\bin\Debug\net5.0\r
 C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\obj\Debug\net5.0\ProvedorCorion.Views.pdb
 C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\obj\Debug\net5.0\ProvedorCorion.csproj.CopyComplete
 C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\obj\Debug\net5.0\ProvedorCorion.genruntimeconfig.cache
+C:\Users\rivai\Documents\GitHub\ProvedorCorion\ProvedorCorion\obj\Debug\net5.0\Razor\Views\Producto\Listar.cshtml.g.cs
