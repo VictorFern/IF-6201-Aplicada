@@ -11,6 +11,7 @@
           asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
           asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script type="text/javascript" charset="utf8" src="~/js/site.js"></script>
 </head>
 <body>
     <header>
@@ -27,7 +28,7 @@
                             <a class="nav-link text-dark active" asp-area="" asp-controller="Cliente" asp-action="Index">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="vercarrito">Carrito</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="verCarrito">Carrito</a>
                         </li>
                         <form class="form-inline my-2 my-lg-0" name="buscar" asp-action="buscar" method="post">
                             <input class="form-control mr-sm-2" type="search" id="nombre" name="nombre" placeholder="Buscar producto" aria-label="Search" />

@@ -392,3 +392,4 @@ C:\Users\gmg55\Desktop\IF6201_TomeYLleve\IF6201_TomeYLleve\obj\Debug\net5.0\IF62
 C:\Users\gmg55\Desktop\IF6201_TomeYLleve\IF6201_TomeYLleve\obj\Debug\net5.0\ref\IF6201_TomeYLleve.dll
 C:\Users\gmg55\Desktop\IF6201_TomeYLleve\IF6201_TomeYLleve\obj\Debug\net5.0\IF6201_TomeYLleve.pdb
 C:\Users\gmg55\Desktop\IF6201_TomeYLleve\IF6201_TomeYLleve\obj\Debug\net5.0\IF6201_TomeYLleve.genruntimeconfig.cache
+C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\IF-6201-Aplicada\IF-6201-Aplicada\Pagina Principal\IF6201_TomeYLleve\IF6201_TomeYLleve\obj\Debug\net5.0\Razor\Views\Cliente\verCarrito.cshtml.g.cs
