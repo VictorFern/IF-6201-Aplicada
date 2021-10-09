@@ -6,74 +6,105 @@ import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
-const url = 'http://localhost:8080/api/student/';
+const url = 'http://localhost:8080/API_PUMBA/products/';
 
 export class App extends Component {
 
   state = {
-    students: [],
+    products: [],
     modalInsert: false,
     modalType: 'insert',
     modalDelete: false,
     form: {
-      studentId: 0,
-      name: '',
-      email: '',
-      password: '',
+      productId: 0,
+      nombre: '',
+      marca: '',
+      descripcion: '',
+      precio: 0,
+      dimensiones: '',
+      foto: '',
+      idProveedor: 0,
+      idCategoria: 0
+
     }
   };
+
+
+
 
   modalInsert = () => {
     this.setState({ modalInsert: !this.state.modalInsert });
   }
 
-  selectStudent = (student) => {
+  selectProduct = (product) => {
+
     this.setState({
       modalType: 'update',
       form: {
-        studentId: student.studentId,
-        name: student.name,
-        email: student.email,
-        password: student.password
+        productId: product.productId,
+        nombre: product.nombre,
+        marca: product.marca,
+        descripcion: product.descripcion,
+        precio: product.precio,
+        dimensiones: product.dimensiones,
+        foto: product.foto,
+        id_proveedor: product.idProveedor,
+        id_categoria: product.idCategoria
       }
     })
   }
 
-  getStudents = () => {
-    axios.get(url + 'getAllStudents').then(response => {
-      this.setState({ students: response.data });
-    }).catch(error => {
-      console.log(error.message);
-    })
+  getProducts = () => {
+
+    axios.get(url + 'getAllProducts')
+      .then(response => {
+        this.setState({ products: response.data });
+      }).catch(error => {
+        console.log(error.message);
+      })
   }
 
-  saveStudent = async () => {
+
+  insertProduct = async () => {
+
     delete this.state.form.id;
-    await axios.post(url + 'saveStudent', this.state.form).then(response => {
-      this.modalInsert();
-      this.getStudents();
-    }).catch(error => {
-      console.log(error.message);
-    })
+    await axios.post(url + 'insertProduct', this.state.form)
+      .then(response => {
+        this.modalInsert();
+        this.getProducts();
+      }).catch(error => {
+        console.log(error.message);
+      })
   }
 
-  updateStudent = () => {
-    axios.put(url + 'updateStudent', this.state.form).then(response => {
-      this.modalInsert();
-      this.getStudents();
-    })
+
+  updateProduct = () => {
+
+    axios.put(url + 'updateProduct', this.state.form)
+      .then(response => {
+        this.modalInsert();
+        this.getProducts();
+      }).catch(error => {
+        console.log(error.message);
+      })
   }
 
-  deleteStudent = () => {
 
-    axios.delete(url + 'DeleteSP/' + this.state.form.studentId, this.state.form).then(response => {
-      this.modalInsert();
-      this.getStudents();
-    })
+  deleteProduct = () => {
+
+    axios.delete(url + 'deleteProduct/' + this.state.form.productId,)
+      .then(response => {
+        this.modalInsert();
+        this.getProducts();
+      }).catch(error => {
+        console.log(error.message);
+      })
 
   }
+
 
   handleChange = async e => {
+
     e.persist();
     await this.setState({
       form: {
@@ -84,78 +115,100 @@ export class App extends Component {
   }
 
 
-
   // GUI 
-
-  componentDidMount() { // similat to Oninit en Angular
-    this.getStudents();
+  componentDidMount() { // se llama al cargar la página init
+    this.getProducts();
   }
 
   render() {
     const { form } = this.state;
     return (
+
       <div className="App">
         <br /><br /><br />
-        <button className="btn btn-success" onClick={() => { this.setState({ form: null, modalType: 'insert' }); this.modalInsert() }}>Agregar estudiante</button>
+        <button className="btn btn-success" onClick={() => { this.setState({ form: null, modalType: 'insert' }); this.modalInsert() }}>Agregar producto</button>
         <br /><br />
-        <table className="table ">
+
+        <table className="table " align="center">
           <thead>
             <tr>
               <th>Id</th>
               <th>Nombre</th>
-              <th>Email</th>
-              <th>Contraseña</th>
-              <th>Acciones</th>
+              <th>Marca</th>
+              <th>Descripción</th>
+              <th>Precio</th>
+              <th>Dimensiones</th>
+              <th>Imagen</th>
+              <th>Editar</th>
             </tr>
           </thead>
+
           <tbody>
-            {this.state.students.map(student => {
+            {this.state.products.map(product => {
+              let uri
               return (
                 <tr>
-                  <td>{student.studentId}</td>
-                  <td>{student.name}</td>
-                  <td>{student.email}</td>
-                  <td>{student.password}</td>
+                  <td>{product.productId}</td>
+                  <td>{product.nombre}</td>
+                  <td>{product.marca}</td>
+                  <td>{product.descripcion}</td>
+                  <td>{product.precio}</td>
+                  <td>{product.dimensiones}</td>
                   <td>
-                    <button className="btn btn-primary" onClick={() => { this.selectStudent(student); this.modalInsert() }}><FontAwesomeIcon icon={faEdit} /></button>
-                    {"   "}
-                    <button className="btn btn-danger" onClick={() => { this.selectStudent(student); this.setState({ modalDelete: true }) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
+                    <div className="App">
+
+                    <a><img src={product.foto} alt="" border="0" /></a>
+                    </div>
+                  </td>
+                  <td>
+                    <button className="btn btn-primary" onClick={() => { this.selectProduct(product); this.modalInsert() }}><FontAwesomeIcon icon={faEdit} /></button>
                   </td>
                 </tr>
               )
             })}
           </tbody>
+
         </table>
 
         <Modal isOpen={this.state.modalInsert}>
           <ModalHeader style={{ display: 'block' }}>
-            <span style={{ float: 'right' }} onClick={() => this.modalInsert()}>x</span>
+            <span style={{ float: 'right' }} onClick={() => this.modalInsert()}>cerrar X</span>
           </ModalHeader>
           <ModalBody>
             <div className="form-group">
-              <label htmlFor="id">Id</label>
-              <input className="form-control" type="number" name="studentId" id="studentId" readOnly onChange={this.handleChange} value={form ? form.studentId : 0} />
+              <label htmlFor="id">ID</label>
+              <input className="form-control" type="number" name="productId" id="productId" readOnly onChange={this.handleChange} value={form ? form.productId : 0} />
               <br />
-              <label htmlFor="name">Nombre</label>
-              <input className="form-control" type="text" name="name" id="name" onChange={this.handleChange} value={form ? form.name : ''} />
+              <label htmlFor="nombre">Nombre</label>
+              <input className="form-control" type="text" name="nombre" id="nombre" onChange={this.handleChange} value={form ? form.nombre : ''} />
               <br />
-              <label htmlFor="email">Email</label>
-              <input className="form-control" type="text" name="email" id="email" onChange={this.handleChange} value={form ? form.email : ''} />
+              <label htmlFor="marca">Marca</label>
+              <input className="form-control" type="text" name="marca" id="marca" onChange={this.handleChange} value={form ? form.marca : ''} />
               <br />
-              <label htmlFor="password">Contraseña</label>
-              <input className="form-control" type="text" name="password" id="password" onChange={this.handleChange} value={form ? form.password : ''} />
+              <label htmlFor="descripcion">Descripción</label>
+              <input className="form-control" type="text" name="descripcion" id="descripcion" onChange={this.handleChange} value={form ? form.descripcion : ''} />
+              <br />
+              <label htmlFor="precio">Precio</label>
+              <input className="form-control" type="number" name="precio" id="precio" onChange={this.handleChange} value={form ? form.precio : ''} />
+              <br />
+              <label htmlFor="dimensiones">Dimensiones</label>
+              <input className="form-control" type="text" name="dimensiones" id="dimensiones" onChange={this.handleChange} value={form ? form.dimensiones : ''} />
+              <br />
+              <label>Imagen: Ingrese la URL</label>
+              <a href="https://postimages.org/" target="_blank">::cargar aquí::</a>
+              <input type="text" className="form-control" name="foto" id="foto" onChange={this.handleChange} value={form ? form.foto : ''} required />
+              <br />
             </div>
           </ModalBody>
 
           <ModalFooter>
-            { this.state.modalType === 'insert' ?
-              <button className="btn btn-success" onClick={() => this.saveStudent()}>Insertar</button> :
-              <button className="btn btn-primary" onClick={() => this.updateStudent()}>Actualizar</button> 
+            {this.state.modalType === 'insert' ?
+              <button className="btn btn-success" onClick={() => this.insertProduct()}>Insertar</button> :
+              <button className="btn btn-primary" onClick={() => this.updateProduct()}>Actualizar</button>
             }
 
-            <button className="btn btn-danger" onClick={() => this.deleteStudent()}>Eliminar</button>
+            <button className="btn btn-danger" onClick={() => this.deleteProduct()}>Eliminar</button>
             <button className="btn btn-danger" onClick={() => this.modalInsert()}>Cancelar</button>
-
           </ModalFooter>
         </Modal>
 

@@ -1,4 +1,4 @@
-package com.api_pumba.domain;
+package com.api_pumba;
 
 import com.api_pumba.RunApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
