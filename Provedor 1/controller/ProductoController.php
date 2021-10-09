@@ -8,13 +8,14 @@ class ProductoController {
 
 // constructor
 
-// listar
 
-    public function inicio() {
+// listar
+   public function inicio() {
         require 'model/ProductoModel.php';
         $cliente = new ProductoModel();
         $data['listado'] = $cliente->mostrar_Producto();
         $this->view->show("indexView.php", $data);
+
     }
 
     public function registrar() {
@@ -47,6 +48,60 @@ class ProductoController {
         }
         
     }
+
+    public function eliminar() {
+        require 'model/ProductoModel.php';
+        
+        $this->view->show("buscaEliminarProductoView.php");
+    }
+    public function mostrarEliminar() {
+        require 'model/ProductoModel.php';
+        $cliente = new ProductoModel();
+        $data['producto'] = $cliente->mostrar_producto_id($_POST['producto']);
+         if (!empty($data['producto'][0][0])) {
+            
+           $this->view->show("eliminarProductoView.php", $data);
+        }else{
+            $this->view->show("buscaEliminarProductoView.php",null);
+            
+        }
+        
+    }
+    public function eliminarProducto() {
+        require 'model/ProductoModel.php';
+        $cliente = new ProductoModel();
+        $cliente->eliminar($_POST['ID']);
+        $this->view->show("buscaEliminarProductoView.php",null);
+    }
+    
+    public function actualiza() {
+        require 'model/ProductoModel.php';
+        
+        $this->view->show("buscaActualizarProductoView.php");
+    }
+    public function mostrarActualizar() {
+        require 'model/ProductoModel.php';
+        $cliente = new ProductoModel();
+        $data['producto'] = $cliente->mostrar_producto_id($_POST['producto']);
+        $data['categorias'] = $cliente->mostrar_Categorias();
+        if (!empty($data['producto'][0][0])) {
+            
+            $this->view->show("actualizarProductoView.php", $data);
+        }else{
+            $this->view->show("buscaActualizarProductoView.php",null);
+            
+        }
+        
+    }
+     public function actualizaProducto() {
+        require 'model/ProductoModel.php';
+        $cliente = new ProductoModel();
+        $cliente->actualizar($_POST['ID'], $_POST['NOMBRE'], $_POST['DESCRIPCION'], $_POST['PRECIO'], $_POST['TALLA'], $_POST['COLOR'], $_POST['MARCA'],$_POST['Categoria']);
+        $this->view->show("buscaActualizarProductoView.php",null);
+    }
+    
+    
+
     
     public function buscarProducto() {
         require 'model/ProductoModel.php';
@@ -61,6 +116,7 @@ class ProductoController {
         $data['listado'] = $cliente->ver_Producto($_GET['producto']);
         $this->view->show("mostrarProductoView.php", $data);
     }
+
 
 }
 

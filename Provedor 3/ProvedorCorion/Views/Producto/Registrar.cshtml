@@ -1,0 +1,44 @@
+﻿@model ProvedorCorion.Models.ProductoModel
+@{
+    ViewData["Title"] = "Registrar";
+    List<SelectListItem> Categorias = (List<SelectListItem>)ViewBag.Categorias;
+}
+
+<form asp-action="Registrar" method="post" enctype="multipart/form-data">
+    <div class="row mx-4 mt-3">
+        <div class="col-md-4 text-center">
+            <label for="inputEmail4" class="form-label">Nombre</label>
+            <input asp-for="Nombre" type="text" class="form-control text-center" required id="Nombre" name="Nombre" placeholder="Nombre del producto">
+        </div>
+        <div class="col-md-4 text-center">
+            <label for="inputEmail4" class="form-label">Marca</label>
+            <input asp-for="Marca" type="text" class="form-control text-center" required id="Marca" name="Marca" placeholder="Marca del producto">
+        </div>
+        <div class="col-md-4 text-center">
+            <label for="inputEmail4" class="form-label">Precio</label>
+            <input asp-for="Precio" type="text" class="form-control text-center" required id="Precio" name="Precio" placeholder="Precio del producto">
+        </div>
+    </div>
+    <div class="row mx-4 mt-3">
+        <div class="col-md-4 text-center">
+            <label for="inputEmail4" class="form-label">Dimensiones</label>
+            <input asp-for="Dimensiones" type="text" class="form-control text-center" required id="Dimensiones" name="Dimensiones" placeholder="Dimensiones del producto">
+        </div>
+        <div class="col-md-4 text-center">
+            <label for="inputEmail4" class="form-label">Descripcion</label>
+            <input asp-for="Descripcion" type="text" class="form-control text-center" required id="Descripcion" name="Descripcion" placeholder="Descripcion del producto">
+        </div>
+        <div class="col-md-4 text-center">
+            <label for="inputEmail4" class="form-label">Imagen</label>
+            <input type="file" asp-for="Image" name="files" class="form-control" accept="image/png, .jpeg, .jpg, image/gif" id="imagen" name="imagen">
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mx-4 mt-3">
+        <label class="control-label">Categoria</label>
+        @Html.DropDownList("listaCategorias", Categorias, "Seleccione una opcion", new { @class = "form-control" })
+    </div>
+    <div class="col-12 w-auto mx-3 text-center my-3">
+        <button type="submit" class="btn btn-primary text-center mt-3">Registrar</button>
+    </div>
+</form>

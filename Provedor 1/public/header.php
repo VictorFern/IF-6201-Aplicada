@@ -19,7 +19,9 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
+
             <a class="navbar-brand" href="?controlador=Producto&accion=inicio"">Caite</a>
+
             <button
                 class="navbar-toggler"
                 type="button"
@@ -40,18 +42,22 @@
                         <a class="nav-link" href="?controlador=Producto&accion=registrar">Nuevo Producto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Actualizar Producto</a>
+
+                        <a class="nav-link" href="?controlador=Producto&accion=actualiza">Actualizar Producto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Eliminar Producto</a>
+                        <a class="nav-link" href="?controlador=Producto&accion=eliminar">Eliminar Producto</a>
                     </li>
+                     
                     <form class="d-flex" name="buscar" action="?controlador=Producto&accion=buscarProducto" method="post">
                         <input
                             class="form-control me-2"
                             type="search"
                             placeholder="Buscar producto"
                             aria-label="Search"
+
                             id="Nombre" name="Nombre"
+
                             />
                         <button class="btn btn-outline-success" type="submit">
                             Buscar
