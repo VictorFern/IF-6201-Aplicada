@@ -26,6 +26,10 @@ function disminuir(c,p,t,ca) {
         var precio = document.getElementById(p).value;
         var total = cantidad * precio;
         document.getElementById(t).value = total;
+        var subtotalTemp = document.getElementById("subtotal").value;
+
+        var subtotal = parseInt(subtotalTemp) - parseInt(precio);
+        document.getElementById("subtotal").value = subtotal;
     }
 }
 
@@ -38,6 +42,10 @@ function aumentar(c, p, t, ca,s) {
         var precio = document.getElementById(p).value;
         var total = cantidad * precio;
         document.getElementById(t).value = total;
+        var subtotalTemp = document.getElementById("subtotal").value;
+
+        var subtotal = parseInt(subtotalTemp) + parseInt(precio);
+        document.getElementById("subtotal").value = subtotal;
     } else if (cantidad > cantStock) {
         alert("La cantidad deseada no está disponible");
         document.getElementById(c).value = --inicio
