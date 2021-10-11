@@ -7,6 +7,10 @@ namespace IF6201_TomeYLleve.Models
 {
     public class UsuarioModel
     {
+        public int cedula { get; set; }
+        public string alias { get; set; }
+        public string pass { get; set; }
+        public string tipo { get; set; }
         public UsuarioModel(int cedula, string alias, string pass, string tipo)
         {
             this.cedula = cedula;
@@ -30,10 +34,6 @@ namespace IF6201_TomeYLleve.Models
             this.tipo = "";
         }
 
-        public int cedula { get; set; }
-        public string alias { get; set; }
-        public string pass { get; set; }
-        public string tipo { get; set; }
 
 
     }
