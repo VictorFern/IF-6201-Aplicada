@@ -1,4 +1,5 @@
 ﻿using IF6201_TomeYLleve.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -26,6 +27,8 @@ namespace IF6201_TomeYLleve.Controllers
 
         public IActionResult iniciarSesion()
         {
+            HttpContext.Session.SetString("variableSession", "valor en session");
+            HttpContext.Session.SetInt32("variableInt", 0);
             return View();
         }
 
@@ -49,6 +52,7 @@ namespace IF6201_TomeYLleve.Controllers
                             UsuarioModel usuarioTemp = new UsuarioModel(Int32.Parse(usuariooReader["CEDULA"].ToString())
                                                                         ,usuariooReader["ALIAS"].ToString()
                                                                         ,usuariooReader["TIPO"].ToString());
+                            HttpContext.Session.SetInt32("variableInt", usuarioTemp.cedula);
                             usuarios.Add(usuarioTemp);
                         }
                         connection.Close();
@@ -61,6 +65,7 @@ namespace IF6201_TomeYLleve.Controllers
                 if (usuarios[0].tipo == "Administrador")
                 {
                     usuarios.Clear();
+
                     return RedirectToAction("Index", "Admin");
                 }
                 else

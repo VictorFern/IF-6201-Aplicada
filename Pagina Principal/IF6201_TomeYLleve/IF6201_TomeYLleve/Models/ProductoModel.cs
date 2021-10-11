@@ -18,6 +18,11 @@ namespace IF6201_TomeYLleve.Models
         public int cantidad { get; set; }
         public CategoriaModel categoriaModel { get; set; }
         public ProveedorModel proveedorModel { get; set; }
+        public int precioCantidad { get; set; }
+        public int subTotal { get; set; }
+        public int stock { get; set; }
+
+
 
         public ProductoModel()
         {
@@ -30,6 +35,8 @@ namespace IF6201_TomeYLleve.Models
             this.otrascaracteristicas = "";
             this.foto = "";
             this.cantidad = 0;
+            this.subTotal = 0;
+            this.precioCantidad = 0;
             this.categoriaModel = null;
             this.proveedorModel = null;
         }
@@ -60,6 +67,18 @@ namespace IF6201_TomeYLleve.Models
             this.cantidad = cantidad;
             this.categoriaModel = categoriaModel;
             this.proveedorModel = proveedorModel;
+        }
+
+        public ProductoModel(int id, string nombre, int precio, int cantidad,string foto,int precioCantidad, int subTotal, int stock)
+        {
+            this.id = id;
+            this.nombre = nombre;
+            this.precio = precio;
+            this.cantidad = cantidad;
+            this.foto = foto;
+            this.precioCantidad = precioCantidad;
+            this.subTotal = subTotal;
+            this.stock = stock;
         }
     }
 }

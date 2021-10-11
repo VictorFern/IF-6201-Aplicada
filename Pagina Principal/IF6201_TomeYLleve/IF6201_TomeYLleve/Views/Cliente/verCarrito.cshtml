@@ -1,0 +1,101 @@
+﻿@model IF6201_TomeYLleve.Models.ProductoModel
+@{
+    ViewData["Title"] = "Cliente";
+    Layout = "_LayoutCLiente";
+}
+
+<div class="container">
+    <div class="table-responsive-sm">
+        <h1>Detalle de carrito</h1>
+        <form asp-action="PagoView" method="post">
+            <table class="table table-bordered table-hover table-condesed" id="table">
+                <thead>
+                    <tr id="table">
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio unidad</th>
+                        <th>Precio cantidad</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (1 == 1)
+                    {
+                        var cont = 1;
+
+
+                        @foreach (ProductoModel temp in ViewBag.Carrito)
+                        {
+                            var idT = "T" + cont;
+                            var idPr = "P" + cont;
+                            var idC = "C" + cont;
+                            var idCont = "idFila" + @temp.cantidad;
+                            var idP = "idP" + cont;
+                            <form asp-action="ComprarCarrito" method="post">
+                            <tr>
+                                <td>
+                                    <img src="~/img/@temp.foto" width="70" height="60" />
+                                    <label>@temp.nombre</label>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col d-flex justify-content-between">
+                                            <input type="button" id="Disminuir" name="Disminuir" class="btn btn-secondary" href="javascript:;" onclick="disminuir('@idCont', '@idPr', '@idT', '@idC')" value="-" />
+                                            <input type="text" class="form-control mx-auto text-center" id="@idC" name="@idC" asp-for="@temp.cantidad" value="@temp.cantidad" style="width : 43px; margin:auto" readonly>
+                                            <input type="button" id="Aumentar" name="Aumentar" class="btn btn-secondary" href="javascript:;" onclick="aumentar('@idCont', '@idPr', '@idT', '@idC', '@temp.stock')" value="+" />
+                                            <input type="hidden" class="form-control" id="@idCont" name="@idCont" value="@temp.cantidad" />
+                                            <input type="hidden" class="form-control" id="@temp.stock" name="@temp.stock" value="@temp.stock" />
+                                        </div>
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    <div class="row">
+                                        <div class="col d-flex">
+                                            <h5>₡</h5>
+                                            <input type="text" class="form-control" id="precio" name="precio" asp-for="@temp.precio" value="@temp.precio" style="width : 100px;" readonly />
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col d-flex">
+                                            <h5>₡</h5>
+                                            <input type="hidden" class="form-control" id="@idPr" name="@idPr" value="@temp.precio" />
+                                            <input type="text" class="form-control" id="@idT" name="@idT" asp-for="@temp.precioCantidad" value="@temp.precioCantidad" style="width : 100px;" readonly />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="hidden" class="form-control" id="idP" name="idP" value="@temp.id" />
+                                    <input type="hidden" class="form-control" id="idU" name="idE" value="@ViewBag.Session" />
+                                    <input type="button" name="carrito" class="btn btn-danger" value="Eliminar" href="javascript:;" onclick="EliminarCarrito($('#idP').val(), $('#idU').val()); return false;">
+                                    <div>
+                                        <br />
+                                        <span id="resultado"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                </form>
+                cont++;
+            }
+                    }
+                    </tbody>
+                    </table>
+
+
+                    <div class="row">
+                        <div class="col d-flex">
+                            <h5 style="color: black; font-weight: bold;">Monto a Pagar ₡ </h5>
+                            <input type="text" class="form-control" id="subtotal" name="subtotal" value="@ViewBag.SubTotal" style="width : 100px;" readonly><br>
+                            <input type="submit" class="btn btn-success" value="Comprar">
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+
+

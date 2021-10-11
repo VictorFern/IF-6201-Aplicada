@@ -25,6 +25,7 @@ namespace IF6201_TomeYLleve.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
