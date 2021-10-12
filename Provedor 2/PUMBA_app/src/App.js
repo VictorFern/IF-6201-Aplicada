@@ -8,6 +8,7 @@ import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
 const url = 'http://localhost:8080/API_PUMBA/products/';
 
+
 export class App extends Component {
 
   state = {
@@ -118,16 +119,21 @@ export class App extends Component {
   // GUI 
   componentDidMount() { // se llama al cargar la página init
     this.getProducts();
+    
   }
 
   render() {
     const { form } = this.state;
+
     return (
 
       <div className="App">
         <br /><br /><br />
         <button className="btn btn-success" onClick={() => { this.setState({ form: null, modalType: 'insert' }); this.modalInsert() }}>Agregar producto</button>
         <br /><br />
+        <div>
+          <button onClick="" type="button">Categorias</button>
+        </div>
 
         <table className="table " align="center">
           <thead>
