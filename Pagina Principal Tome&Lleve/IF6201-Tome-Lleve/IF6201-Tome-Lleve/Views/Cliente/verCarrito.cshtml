@@ -31,8 +31,10 @@
                             var idC = "C" + cont;
                             var idCont = "idFila" + @temp.cantidad;
                             var idP = "idP" + cont;
+                            var idF = "idF" + cont;
+                            var idU = "idU" + cont;
                             <form asp-action="ComprarCarrito" method="post">
-                            <tr>
+                            <tr id="@idF" name="@idF">
                                 <td>
                                     <img src="~/img/@temp.foto" width="70" height="60" />
                                     <label>@temp.nombre</label>
@@ -40,11 +42,13 @@
                                 <td>
                                     <div class="row">
                                         <div class="col d-flex justify-content-between">
-                                            <input type="button" id="Disminuir" name="Disminuir" class="btn btn-secondary" href="javascript:;" onclick="disminuir('@idCont', '@idPr', '@idT', '@idC')" value="-" />
+                                            <input type="button" id="Disminuir" name="Disminuir" class="btn btn-secondary" href="javascript:;" onclick="disminuir('@idCont', '@idPr', '@idT', '@idC', $('#@idP').val(),$('#@idU').val(), 1); return false;" value="-" />
                                             <input type="text" class="form-control mx-auto text-center" id="@idC" name="@idC" asp-for="@temp.cantidad" value="@temp.cantidad" style="width : 43px; margin:auto" readonly>
-                                            <input type="button" id="Aumentar" name="Aumentar" class="btn btn-secondary" href="javascript:;" onclick="aumentar('@idCont', '@idPr', '@idT', '@idC', '@temp.stock')" value="+" />
+                                            <input type="button" id="Aumentar" name="Aumentar" class="btn btn-secondary" href="javascript:;" onclick="aumentar('@idCont', '@idPr', '@idT', '@idC', '@temp.stock', $('#@idP').val(),$('#@idU').val(), 2); return false;" value="+" />
                                             <input type="hidden" class="form-control" id="@idCont" name="@idCont" value="@temp.cantidad" />
                                             <input type="hidden" class="form-control" id="@temp.stock" name="@temp.stock" value="@temp.stock" />
+                                            <input type="hidden" class="form-control" id="@idP" name="@idP" value="@temp.id" />
+                                            <input type="hidden" class="form-control" id="@idU" name="@idU" value="@ViewBag.Session" />
                                         </div>
                                     </div>
 
@@ -69,9 +73,9 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <input type="hidden" class="form-control" id="idP" name="idP" value="@temp.id" />
-                                    <input type="hidden" class="form-control" id="idU" name="idE" value="@ViewBag.Session" />
-                                    <input type="button" name="carrito" class="btn btn-danger" value="Eliminar" href="javascript:;" onclick="EliminarCarrito($('#idP').val(), $('#idU').val()); return false;">
+                                    <input type="hidden" class="form-control" id="@idP" name="@idP" value="@temp.id" />
+                                    <input type="hidden" class="form-control" id="@idU" name="@idU" value="@ViewBag.Session" />
+                                    <input type="button" name="carrito" class="btn btn-danger" value="Eliminar" href="javascript:;" onclick="EliminarCarrito($('#@idP').val(),$('#@idU').val(), '@idF', $('#@idT').val()); return false;">
                                     <div>
                                         <br />
                                         <span id="resultado"></span>

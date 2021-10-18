@@ -175,7 +175,7 @@ namespace IF6201_TomeYLleve.Controllers
             {
                 string connectionString = Configuration["ConnectionStrings:DB_Connection"];
                 var connection = new SqlConnection(connectionString);
-                string sqlQuery = $"exec sp_anadirCarrito @param_CEDULA='{idU}',@paramIDP='{idP}',@param_CANTIDAD='{cant}'";
+                string sqlQuery = $"exec sp_anadirCarrito @param_CEDULA='{idU}',@param_IDP='{idP}',@param_CANTIDAD='{cant}'";
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                 {
                     command.CommandType = System.Data.CommandType.Text;
@@ -222,9 +222,46 @@ namespace IF6201_TomeYLleve.Controllers
                     }
                 }
             }
+            int valor = (int)HttpContext.Session.GetInt32("variableInt");
+            ViewBag.Session = valor;
             ViewBag.Carrito = lista;
             ViewBag.SubTotal = subTotalTemp;
             return View();
+        }
+        public IActionResult UpdateCarrito(int idP, int idU, int cant)
+        {
+            if (ModelState.IsValid)
+            {
+                string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+                var connection = new SqlConnection(connectionString);
+                string sqlQuery = $"exec sp_actualizarCarrito @param_IDP='{idP}',@param_IDU='{idU}',@param_ASC='{cant}'";
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    connection.Open();
+                    command.ExecuteReader();
+                    connection.Close();
+                }
+            }
+            return new JsonResult("Se actualizo");
+        }
+
+        public IActionResult EliminarCarrito(int idP, int idU)
+        {
+            if (ModelState.IsValid)
+            {
+                string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+                var connection = new SqlConnection(connectionString);
+                string sqlQuery = $"exec sp_eliminarCarrito @param_IDP='{idP}',@param_IDU='{idU}'";
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    connection.Open();
+                    command.ExecuteReader();
+                    connection.Close();
+                }
+            }
+            return new JsonResult("");
         }
     }
 }

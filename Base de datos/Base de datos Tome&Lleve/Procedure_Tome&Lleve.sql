@@ -164,18 +164,27 @@ BEGIN
 	
 END
 GO
-CREATE PROCEDURE sp_anadirCarrito(@param_CEDULA INT, @paramIDP INT, @param_CANTIDAD INT)
+CREATE PROCEDURE sp_anadirCarrito(@param_CEDULA INT, @param_IDP INT, @param_CANTIDAD INT)
 AS
 BEGIN
-	INSERT INTO PRODUCTO.tb_CARRITO(
-	[IDP]
-	, [IDU]
-	,CANTIDAD
-	)VALUES(
-	@paramIDP
-	,@param_CEDULA
-	,@param_CANTIDAD
-	)
+	IF EXISTS(SELECT IDP, IDU FROM PRODUCTO.tb_CARRITO WHERE IDP = @param_IDP AND IDU = @param_CEDULA)
+	BEGIN
+		UPDATE PRODUCTO.tb_CARRITO
+		SET CANTIDAD = CANTIDAD + @param_CANTIDAD
+		WHERE IDP = @param_IDP AND IDU = @param_CEDULA
+	END
+	ELSE
+	BEGIN
+		INSERT INTO PRODUCTO.tb_CARRITO(
+		[IDP]
+		, [IDU]
+		,CANTIDAD
+		)VALUES(
+		@param_IDP
+		,@param_CEDULA
+		,@param_CANTIDAD
+		)
+	END
 END
 GO
 CREATE PROCEDURE sp_verCarrito(@param_IDU INT)
@@ -239,4 +248,31 @@ delete from PRODUCTO.tb_CARRITO
 --,CONVERT(varchar,DECRYPTBYKEYAUTOCERT(CERT_ID('CLAVE_ENCRYPTED_CERT'),NULL,CLAVE_ENCRYPTED)) AS TCC_DESCRYPTION
 --FROM PROVEEDOR.tb_CLAVE
 --select * from PRODUCTO.tb_PRODUCTO
+GO
+CREATE PROCEDURE sp_actualizarCarrito(@param_IDP INT, @param_IDU INT, @param_ASC INT)
+AS
+BEGIN
+	IF @param_ASC = 1
+	BEGIN
+		UPDATE PRODUCTO.tb_CARRITO
+		SET CANTIDAD = CANTIDAD-1
+		WHERE IDP = @param_IDP AND IDU = @param_IDU
+	END
+	IF @param_ASC = 2
+	BEGIN
+		UPDATE PRODUCTO.tb_CARRITO
+		SET CANTIDAD = CANTIDAD+1
+		WHERE IDP = @param_IDP AND IDU = @param_IDU
+	END
+END
 
+exec sp_actualizarCarrito @param_IDP = 3, @param_IDU = 305220049, @param_ASC = 2
+
+GO
+CREATE PROCEDURE sp_eliminarCarrito(@param_IDP INT, @param_IDU INT)
+AS
+BEGIN
+	DELETE FROM PRODUCTO.tb_CARRITO
+	WHERE IDP = @param_IDP AND IDU = @param_IDU
+END
+exec sp_eliminarCarrito @param_IDP = 5, @param_IDU= 305050839

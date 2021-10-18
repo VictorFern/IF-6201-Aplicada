@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "i4fadXjLBwwNvurmeF+tfsp02dN2P9VT/CMjY2i8dtJdjTFBLF/Hrl7g9RSKt4zXCLrPQpCjdLsbj+eeO9vc7A==",
+  "dgSpecHash": "euLxKHmX1afPJu3IyNoTHA8yR/DnPDpVPCU4s/WHbtGbqPRh2YXhsxtj57ad7HaMV+aZOi/WxxVopi8eK0hJrQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gmg55\\source\\repos\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve.csproj",
+  "projectFilePath": "C:\\Program Files (x86)\\EasyPHP-Devserver-17\\eds-www\\IF-6201-Aplicada\\IF-6201-Aplicada\\Pagina Principal Tome&Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gmg55\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\gmg55\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
