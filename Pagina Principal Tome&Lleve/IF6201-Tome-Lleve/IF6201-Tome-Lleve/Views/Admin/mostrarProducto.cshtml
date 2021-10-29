@@ -1,0 +1,57 @@
+﻿@model IF6201_TomeYLleve.Models.ProductoModel
+@{
+    ViewData["Title"] = "Mostrando Productos a Actualizar/Eliminar";
+    Layout = "_LayoutAdmin";
+}
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Producto</th>
+                    <th>Categoria</th>
+                    <th>Detalle</th>
+                    <th>Precio</th>
+                    <th>Proveedor</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ProductoModel tem in ViewBag.Lista)
+                {
+                <tr>
+
+
+                    <td>
+                        <div id="box1">
+                            <figure>
+                                <img class="fit-image  rounded d-block m-l-none" src="~/img/@tem.foto" alt="Responsive image">
+                            </figure>
+                        </div>
+                    </td>
+                    <td>@tem.nombre</td>
+                    <td>@tem.categoriaModel.categoria</td>
+                    <td>@tem.descripcion</td>
+                    <td>₡@tem.precio</td>
+                    <td>@tem.proveedorModel.proveedor</td>
+                    <td>
+                        @Html.ActionLink("Actualizar", "actualizar", new { id = tem.id })
+                   
+                    </td>
+                    <td>
+                        @Html.ActionLink("Eliminar", "eliminar", new { id = tem.id })
+                    </td>
+
+
+                </tr>
+                }
+            </tbody>
+
+        </table>
+
+
+
+    </div>
+    
+</div>
+
