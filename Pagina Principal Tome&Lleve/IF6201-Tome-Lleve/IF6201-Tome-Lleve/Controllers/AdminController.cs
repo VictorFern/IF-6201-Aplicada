@@ -164,25 +164,161 @@ namespace IF6201_TomeYLleve.Controllers
             ViewBag.Lista = lista;
             return View();
         }
-
-        public IActionResult eliminar()
+        public IActionResult buscaEliminaActualiza()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult eliminar(ProductoModel productoModel)
+        public IActionResult buscaEliminaActualiza(ProductoModel productoModel)
         {
             return View();
         }
 
-        public IActionResult actualizar()
+        public IActionResult mostrarProducto()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult mostrarProducto(ProductoModel productoModel)
+        {
+            List<object> lista = new List<object>();
+            if (ModelState.IsValid)
+            {
+                string connectioString = Configuration["ConnectionStrings:DB_Connection"];
+                using (SqlConnection connection = new SqlConnection(connectioString))
+                {
+                    string sqlQuery = $"sp_listaProducto @param_NOMBREP='{productoModel.nombre}'";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        connection.Open();
+                        SqlDataReader productoReader = command.ExecuteReader();
+                        while (productoReader.Read())
+                        {
+                            CategoriaModel categoriaModel = new CategoriaModel();
+                            categoriaModel.categoria = productoReader["CATEGORIA"].ToString();
+                            ProveedorModel proveedorModel = new ProveedorModel();
+                            proveedorModel.proveedor = productoReader["PROVEEDOR"].ToString();
+                            ProductoModel productoTemp = new ProductoModel(Int32.Parse(productoReader["IDP"].ToString())
+                                                                            , productoReader["NOMBREP"].ToString()
+                                                                           , productoReader["MARCA"].ToString()
+                                                                           , productoReader["DESCRIPCION"].ToString()
+                                                                           , Int32.Parse(productoReader["PRECIO"].ToString())
+                                                                           , productoReader["DIMENSION"].ToString()
+                                                                           , productoReader["OTRASCARACTERISTICAS"].ToString()
+                                                                           , productoReader["FOTO"].ToString()
+                                                                           , Int32.Parse(productoReader["CANTIDAD"].ToString())
+                                                                           , categoriaModel
+                                                                           , proveedorModel);
+                            lista.Add(productoTemp);
+                        }
+                        connection.Close();
+                    }
+                }
+            }
+            ViewBag.Lista = lista;
+            return View();
+
+        }
+
+
+
+        public IActionResult eliminar(int id)
+        {
+            ProductoModel productoTemp = new ProductoModel();
+            if (ModelState.IsValid)
+            {
+                string connectioString = Configuration["ConnectionStrings:DB_Connection"];
+                using (SqlConnection connection = new SqlConnection(connectioString))
+                {
+                    string sqlQuery = $"sp_eliminarProductoID @param_ID='{id}'";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        connection.Open();
+                        SqlDataReader productoReader = command.ExecuteReader();
+
+
+                        connection.Close();
+                    }
+                }
+            }
+
+            return RedirectToAction("index");
+
+        }
+
+        [HttpPost]
+        public IActionResult eliminar(ProductoModel productoModel)
+        {
+
+            return View();
+        }
+
+        public IActionResult actualizar(int id)
+        {
+            ProductoModel productoTemp = new ProductoModel();
+            if (ModelState.IsValid)
+            {
+                string connectioString = Configuration["ConnectionStrings:DB_Connection"];
+                using (SqlConnection connection = new SqlConnection(connectioString))
+                {
+                    string sqlQuery = $"sp_mostrarProductoID @param_ID='{id}'";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        connection.Open();
+                        SqlDataReader productoReader = command.ExecuteReader();
+
+                        while (productoReader.Read())
+                        {
+
+                            CategoriaModel categoriaModel = new CategoriaModel();
+                            categoriaModel.categoria = productoReader["CATEGORIA"].ToString();
+                            ProveedorModel proveedorModel = new ProveedorModel();
+                            proveedorModel.proveedor = productoReader["PROVEEDOR"].ToString();
+                            productoTemp = new ProductoModel(productoReader["NOMBREP"].ToString()
+                                                                           , productoReader["MARCA"].ToString()
+                                                                           , productoReader["DESCRIPCION"].ToString()
+                                                                           , Int32.Parse(productoReader["PRECIO"].ToString())
+                                                                           , productoReader["DIMENSION"].ToString()
+                                                                           , productoReader["OTRASCARACTERISTICAS"].ToString()
+                                                                           , productoReader["FOTO"].ToString()
+                                                                           , Int32.Parse(productoReader["CANTIDAD"].ToString())
+                                                                           , categoriaModel
+                                                                           , proveedorModel);
+
+                        }
+                        connection.Close();
+                    }
+                }
+            }
+
+            return View(productoTemp);
         }
         [HttpPost]
         public IActionResult actualizar(ProductoModel productoModel)
         {
+            if (ModelState.IsValid)
+            {
+                string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+                var connection = new SqlConnection(connectionString);
+                string sqlQuery = $"sp_actualizarProductoID @param_IDP ='{productoModel.id}', @param_NOMBREP ='{productoModel.nombre}',@param_DESCRIPCION ='{productoModel.descripcion}',@param_PRECIO ='{productoModel.precio}',@param_DIMENSION ='{productoModel.dimension}',@param_OTRASCARACTERISTICAS ='{productoModel.otrascaracteristicas}',@param_CANTIDAD ='{productoModel.cantidad}', @param_MARCA ='{productoModel.marca}'";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    connection.Open();
+                    command.ExecuteReader();
+                    connection.Close();
+                }
+                TempData["Success"] = "Se actualizo correctamente.";
+
+            }
+
             return View();
         }
     }
+
+
 }

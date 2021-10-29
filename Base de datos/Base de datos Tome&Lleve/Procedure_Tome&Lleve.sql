@@ -212,7 +212,57 @@ update PRODUCTO.tb_CARRITO
 set CANTIDAD = 3
 where IDP = 5
 delete from PRODUCTO.tb_CARRITO
+Create procedure [dbo].[sp_mostrarProductoID](@param_ID INT)
+AS
+begin
+	SELECT
+		P.IDP
+		,P.NOMBREP
+		,P.DESCRIPCION
+		,P.DIMENSION
+		,P.PRECIO
+		,P.CANTIDAD
+		,P.MARCA
+		,P.OTRASCARACTERISTICAS
+		,P.FOTO
+		,PC.CATEGORIA
+		,PP.NOMBRE AS PROVEEDOR
+		FROM PRODUCTO.tb_PRODUCTO P
+			JOIN PRODUCTO.tb_CATEGORIA PC
+				ON P.IDCATEGORIA = PC.ID
+				JOIN PROVEEDOR.tb_PROVEEDOR PP
+					ON P.IDPROVEEDOR = PP.ID
+		WHERE P.ISDELETE = 0 and P.IDP=@param_ID
+end
 
+Create procedure [dbo].[sp_actualizarProductoID](@param_IDP INT
+									, @param_NOMBREP VARCHAR(250)
+									, @param_DESCRIPCION VARCHAR(MAX)
+									, @param_PRECIO INT
+									, @param_DIMENSION VARCHAR(50)
+									, @param_OTRASCARACTERISTICAS VARCHAR(200)
+									, @param_CANTIDAD INT
+									, @param_MARCA VARCHAR(50))
+as
+BEGIN
+		UPDATE PRODUCTO.tb_PRODUCTO
+		SET NOMBREP=@param_NOMBREP
+			,DESCRIPCION=@param_DESCRIPCION
+			,PRECIO=@param_PRECIO
+			,DIMENSION= @param_DIMENSION
+			,OTRASCARACTERISTICAS=@param_OTRASCARACTERISTICAS
+			,CANTIDAD=@param_CANTIDAD
+			,MARCA= @param_MARCA
+		WHERE IDP=@param_IDP
+END
+
+Create procedure [dbo].[sp_eliminarProductoID](@param_ID INT)
+AS
+begin
+	UPDATE PRODUCTO.tb_PRODUCTO
+		SET ISDELETE=1
+		WHERE IDP=@param_ID
+end
 --select * from PRODUCTO.tb_CARRITO
 
 
