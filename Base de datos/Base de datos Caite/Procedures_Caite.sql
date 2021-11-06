@@ -30,6 +30,7 @@ BEGIN
     , COLOR
     , MARCA
     , IMAGEN
+    ,IsDelete
     )VALUES(
     param_NOMBRE
     ,param_DESCRIPCION
@@ -38,6 +39,7 @@ BEGIN
     ,param_COLOR
     ,param_MARCA
     ,param_FOTO
+    ,0
     );
     SET param_ID = (SELECT ID FROM tb_PRODUCTO order by ID desc LIMIT 1);
     INSERT INTO tb_producto_categoria(
@@ -149,3 +151,7 @@ SET IsDelete=1
 WHERE ID = param_ID;
               
 END $$
+
+SELECT
+*
+FROM tb_producto
