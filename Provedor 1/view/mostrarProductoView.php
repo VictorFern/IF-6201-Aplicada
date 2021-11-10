@@ -6,7 +6,7 @@ include_once 'public/header.php';
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div id="box1">
             <figure>
-                <img class="fit-image  rounded d-block m-l-none" src="<?php echo $vars['listado'][0][7] ?>" alt="Responsive image">
+                <img class="fit-image  rounded d-block m-l-none" src="public/img/<?php echo $vars['listado'][0][7] ?>" alt="Responsive image">
             </figure>
             <div class="caption">
                 <h3>
