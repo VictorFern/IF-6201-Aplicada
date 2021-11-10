@@ -454,19 +454,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Androw\\.nuget\\packages\\": {}
+    "C:\\Users\\gmg55\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\UCR\\UCR 2021\\ll Semestre\\Aplicada\\proyectoPruebaGIt\\IF-6201-Aplicada\\Pagina Principal Tome&Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve.csproj",
+      "projectUniqueName": "C:\\Program Files (x86)\\EasyPHP-Devserver-17\\eds-www\\IF-6201-Aplicada\\IF-6201-Aplicada\\Pagina Principal Tome&Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve.csproj",
       "projectName": "IF6201-Tome-Lleve",
-      "projectPath": "D:\\UCR\\UCR 2021\\ll Semestre\\Aplicada\\proyectoPruebaGIt\\IF-6201-Aplicada\\Pagina Principal Tome&Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve.csproj",
-      "packagesPath": "C:\\Users\\Androw\\.nuget\\packages\\",
-      "outputPath": "D:\\UCR\\UCR 2021\\ll Semestre\\Aplicada\\proyectoPruebaGIt\\IF-6201-Aplicada\\Pagina Principal Tome&Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve\\obj\\",
+      "projectPath": "C:\\Program Files (x86)\\EasyPHP-Devserver-17\\eds-www\\IF-6201-Aplicada\\IF-6201-Aplicada\\Pagina Principal Tome&Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve.csproj",
+      "packagesPath": "C:\\Users\\gmg55\\.nuget\\packages\\",
+      "outputPath": "C:\\Program Files (x86)\\EasyPHP-Devserver-17\\eds-www\\IF-6201-Aplicada\\IF-6201-Aplicada\\Pagina Principal Tome&Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Androw\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gmg55\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -515,7 +515,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
