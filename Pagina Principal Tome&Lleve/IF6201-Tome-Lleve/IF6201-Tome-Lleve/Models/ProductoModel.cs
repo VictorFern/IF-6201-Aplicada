@@ -69,7 +69,7 @@ namespace IF6201_TomeYLleve.Models
             this.proveedorModel = proveedorModel;
         }
 
-        public ProductoModel(int id, string nombre, int precio, int cantidad,string foto,int precioCantidad, int subTotal, int stock)
+        public ProductoModel(int id, string nombre, int precio, int cantidad,string foto,int precioCantidad, int stock)
         {
             this.id = id;
             this.nombre = nombre;
@@ -77,7 +77,6 @@ namespace IF6201_TomeYLleve.Models
             this.cantidad = cantidad;
             this.foto = foto;
             this.precioCantidad = precioCantidad;
-            this.subTotal = subTotal;
             this.stock = stock;
         }
     }

@@ -318,6 +318,11 @@ namespace IF6201_TomeYLleve.Controllers
 
             return View();
         }
+        public ActionResult cerrarSesion()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("iniciarSesion", "Usuario");
+        }
     }
 
 

@@ -7,7 +7,7 @@
 <div class="container">
     <div class="table-responsive-sm">
         <h1>Detalle de carrito</h1>
-        <form asp-action="PagoView" method="post">
+        <form asp-action="comprarCarrito" method="post">
             <table class="table table-bordered table-hover table-condesed" id="table">
                 <thead>
                     <tr id="table">
@@ -33,7 +33,7 @@
                             var idP = "idP" + cont;
                             var idF = "idF" + cont;
                             var idU = "idU" + cont;
-                            <form asp-action="ComprarCarrito" method="post">
+                            <form asp-action="UpdateCarrito" method="post">
                             <tr id="@idF" name="@idF">
                                 <td>
                                     <img src="~/img/@temp.foto" width="70" height="60" />

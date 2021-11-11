@@ -172,3 +172,9 @@ D:\UCR\UCR 2021\ll Semestre\Aplicada\proyectoPruebaGIt\IF-6201-Aplicada\Pagina P
 D:\UCR\UCR 2021\ll Semestre\Aplicada\proyectoPruebaGIt\IF-6201-Aplicada\Pagina Principal Tome&Lleve\IF6201-Tome-Lleve\IF6201-Tome-Lleve\obj\Debug\net5.0\Razor\Views\Admin\actualizar.cshtml.g.cs
 D:\UCR\UCR 2021\ll Semestre\Aplicada\proyectoPruebaGIt\IF-6201-Aplicada\Pagina Principal Tome&Lleve\IF6201-Tome-Lleve\IF6201-Tome-Lleve\obj\Debug\net5.0\Razor\Views\Admin\buscaEliminaActualiza.cshtml.g.cs
 D:\UCR\UCR 2021\ll Semestre\Aplicada\proyectoPruebaGIt\IF-6201-Aplicada\Pagina Principal Tome&Lleve\IF6201-Tome-Lleve\IF6201-Tome-Lleve\obj\Debug\net5.0\Razor\Views\Admin\mostrarProducto.cshtml.g.cs
+C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\IF-6201-Aplicada\IF-6201-Aplicada\Pagina Principal Tome&Lleve\IF6201-Tome-Lleve\IF6201-Tome-Lleve\obj\Debug\net5.0\Razor\Views\Admin\actualizar.cshtml.g.cs
+C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\IF-6201-Aplicada\IF-6201-Aplicada\Pagina Principal Tome&Lleve\IF6201-Tome-Lleve\IF6201-Tome-Lleve\obj\Debug\net5.0\Razor\Views\Admin\buscaEliminaActualiza.cshtml.g.cs
+C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\IF-6201-Aplicada\IF-6201-Aplicada\Pagina Principal Tome&Lleve\IF6201-Tome-Lleve\IF6201-Tome-Lleve\obj\Debug\net5.0\Razor\Views\Admin\mostrarProducto.cshtml.g.cs
+C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\IF-6201-Aplicada\IF-6201-Aplicada\Pagina Principal Tome&Lleve\IF6201-Tome-Lleve\IF6201-Tome-Lleve\obj\Debug\net5.0\Razor\Views\Cliente\comprar.cshtml.g.cs
+C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\IF-6201-Aplicada\IF-6201-Aplicada\Pagina Principal Tome&Lleve\IF6201-Tome-Lleve\IF6201-Tome-Lleve\obj\Debug\net5.0\Razor\Views\Cliente\comprarCarrito.cshtml.g.cs
+C:\Program Files (x86)\EasyPHP-Devserver-17\eds-www\IF-6201-Aplicada\IF-6201-Aplicada\Pagina Principal Tome&Lleve\IF6201-Tome-Lleve\IF6201-Tome-Lleve\obj\Debug\net5.0\Razor\Views\Cliente\detalleCompra.cshtml.g.cs
