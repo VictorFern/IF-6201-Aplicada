@@ -1,0 +1,93 @@
+﻿@model ProvedorCorion.Models.ProductoModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProvedorCorion</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script>
+        function eliminarProducto(idProducto) {
+            var parametros = { "Id": idProducto };
+            $.ajax(
+                {
+                    data: parametros,
+                    url: '/Producto/EliminarProducto',
+                    type: 'post',
+                    success: function (response) {
+                        location.reload();
+                    }
+                });
+        }
+        function actualizarProducto(idProducto) {
+            var parametros = { "Id": idProducto };
+            $.ajax(
+                {
+                    data: parametros,
+                    url: '/Producto/ActualizarProducto',
+                    type: 'post',
+                    success: function (response) {
+                        $('#info').html(response);
+                    }
+                });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ProvedorCorion</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Admi" asp-action="Login">Iniciar Sesion</a>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a class="dropdown-toggle nav-link text-dark" data-toggle="dropdown" href="#">Productos</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Producto" asp-action="Registrar">Registrar</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Producto" asp-action="Listar">Listar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <form asp-controller="Producto" asp-action="NameSearch" method="post" enctype="multipart/form-data">
+                                <div class="row mx-4 mt-3">
+                                    <input asp-for="Nombre" type="text" class="form-control text-center" onchange="submit" required id="Nombre" name="Nombre" placeholder="Nombre del producto">
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - ProvedorCorion - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
