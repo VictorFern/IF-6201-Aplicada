@@ -131,9 +131,6 @@ export class App extends Component {
         <br /><br /><br />
         <button className="btn btn-success" onClick={() => { this.setState({ form: null, modalType: 'insert' }); this.modalInsert() }}>Agregar producto</button>
         <br /><br />
-        <div>
-          <button onClick="" type="button">Categorias</button>
-        </div>
 
         <table className="table " align="center">
           <thead>
