@@ -63,6 +63,12 @@
                             Buscar
                         </button>
                     </form>
+                     </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="?controlador=Producto&accion=login"><span class="glyphicon glyphicon-log-in"></span> Tome&Lleve</a>
+                        </li>
+                    </ul>
             </div>
         </div>
     </nav>

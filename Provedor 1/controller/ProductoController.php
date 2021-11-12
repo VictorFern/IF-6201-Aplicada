@@ -66,8 +66,9 @@ class ProductoController {
     public function eliminarProducto() {
         require 'model/ProductoModel.php';
         $cliente = new ProductoModel();
-        $cliente->eliminar($_POST['ID']);
-        $this->view->show("buscaEliminarProductoView.php", null);
+        $cliente->eliminar($_POST['producto1']);
+        $data['listado'] = $cliente->mostrar_Producto();
+        $this->view->show("indexView.php", $data);
     }
 
     public function actualiza() {
@@ -93,7 +94,8 @@ class ProductoController {
         require 'model/ProductoModel.php';
         $cliente = new ProductoModel();
         $cliente->actualizar($_POST['ID'], $_POST['NOMBRE'], $_POST['DESCRIPCION'], $_POST['PRECIO'], $_POST['TALLA'], $_POST['COLOR'], $_POST['MARCA'], $_POST['Categoria']);
-        $this->view->show("buscaActualizarProductoView.php", null);
+        $data['listado'] = $cliente->ver_Producto($_POST['ID']);
+        $this->view->show("mostrarProductoView.php", $data);
     }
 
     public function buscarProducto() {
@@ -110,6 +112,11 @@ class ProductoController {
         $this->view->show("mostrarProductoView.php", $data);
     }
 
+    public function login() {
+        require 'model/ProductoModel.php';
+
+        $this->view->show("loginView.php");
+    }
 }
 
 // fin clase

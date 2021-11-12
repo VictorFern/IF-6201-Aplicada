@@ -41,6 +41,18 @@ include_once 'public/header.php';
                    Color: <?php echo $vars['listado'][0][5] ?>
                 </h3>
             </div>
+            <div>
+                <form  id="idPro" class="col-sm-12" style="margin-top:50px; margin-bottom:100px;" action="?controlador=Producto&accion=mostrarActualizar" method="post">
+                    <input type="text"  class="form-control" id="producto" name="producto" placeholder="Codigo" value="<?php echo $vars['listado'][0][0] ?>" required hidden />
+                <input class="btn btn-primary" type="submit" id="actualiza" name="actualiza" value="Actualizar"/>
+            </form>
+            </div>
+            <div>
+             <form name="login" action="?controlador=Producto&accion=eliminarProducto" method="post">
+                <input type="text"  class="form-control" id="producto1" name="producto1" placeholder="Codigo" value="<?php echo $vars['listado'][0][0] ?>" required hidden />
+                <input class="btn btn-primary" type="submit" id="eliminar" name="Eliminar" value="Eliminar"/>
+            </form>
+            </div>
         </div> 
     </div>
 </div>
