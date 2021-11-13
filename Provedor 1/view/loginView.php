@@ -13,15 +13,14 @@ include_once 'public/header.php';
                         </div>
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
-                                <form id="iniciaSesion" action="#" method="POST">
+                                <form id="iniciaSesion" action="?controlador=Producto&accion=inicioSeccion" method="POST">
                                     <h1>Iniciar Sesión</h1>
-                                    <input type="text" style=" margin-bottom: 15px;" class="form-control" placeholder="Provedor" required/>
-
-                                    <input type="password" style="margin-bottom: 15px;" class="form-control" placeholder="Clave" required/>
+                                    
+                                    <input type="password" id="clave" name="clave" style="margin-bottom: 15px;" class="form-control" placeholder="Clave" required/>
 
                                     <button type="submit" class="btn btn-success">Iniciar Sesión</button>
                                     <p class="mb-5 pb-lg-2" style="color: #393f81;">¿Solicitar contraseña si no la tiene? 
-                                        <a href="#!" style="color: #393f81;">Solicitar key</a>
+                                        <a href="?controlador=Producto&accion=solicitar" style="color: #393f81;">Solicitar key</a>
                                     </p>
                                 </form>
 
