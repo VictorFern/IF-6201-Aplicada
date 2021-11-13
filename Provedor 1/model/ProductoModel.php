@@ -73,5 +73,13 @@ class ProductoModel {
         $query->closeCursor();
         return $data;
     }
+     public function solicitar_key() {
+        $data['productos'] = json_decode(file_get_contents('http://apitomeylleve-001-site1.etempurl.com/api/Productos/getKey/1'), true);
+        return $data;
+    }
+     public function inicioSeccion($clave) {
+        $data['seccion'] = json_decode(file_get_contents('http://apitomeylleve-001-site1.etempurl.com/api/Productos/login/'.$clave), true);
+        return $data;
+    }
 
 }

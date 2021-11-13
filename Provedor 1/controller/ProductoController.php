@@ -117,6 +117,19 @@ class ProductoController {
 
         $this->view->show("loginView.php");
     }
+    public function solicitar() {
+        require 'model/ProductoModel.php';
+        $cliente = new ProductoModel();
+        $data['productos'] = $cliente->solicitar_key();
+        $this->view->show("loginView.php", null);
+    }
+    
+    public function inicioSeccion() {
+        require 'model/ProductoModel.php';
+         $cliente = new ProductoModel();
+        $data['seccion'] = $cliente->inicioSeccion($_POST['clave']);
+        $this->view->show("enviarView.php",null);
+    }
 }
 
 // fin clase
