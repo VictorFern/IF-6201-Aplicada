@@ -56,7 +56,7 @@ namespace ProvedorCorion.Controllers
             if (HttpContext.Request.Form.Files != null)
             {
                 Console.WriteLine("entro en el if");
-                Console.WriteLine(productoModel.Image);
+                Console.WriteLine(productoModel.Foto);
                 fileName = string.Empty;
                 string PathDB = string.Empty;
 
@@ -171,7 +171,7 @@ namespace ProvedorCorion.Controllers
                             temp.Precio = Int32.Parse(productosReader["PRECIO"].ToString());
                             temp.Dimensiones = productosReader["DIMENSIONES"].ToString();
                             temp.Descripcion = productosReader["DESCRIPCION"].ToString();
-                            temp.Image = productosReader["PIMAGE"].ToString();
+                            temp.Foto = productosReader["PIMAGE"].ToString();
                             productos.Add(temp);
                         } // while
                         connection.Close();
@@ -204,7 +204,7 @@ namespace ProvedorCorion.Controllers
                         temp.Precio = Int32.Parse(productosReader["PRECIO"].ToString());
                         temp.Dimensiones = productosReader["DIMENSIONES"].ToString();
                         temp.Descripcion = productosReader["DESCRIPCION"].ToString();
-                        temp.Image = productosReader["PIMAGE"].ToString();
+                        temp.Foto = productosReader["PIMAGE"].ToString();
                         productos.Add(temp);
                     } // while
                     connection.Close();

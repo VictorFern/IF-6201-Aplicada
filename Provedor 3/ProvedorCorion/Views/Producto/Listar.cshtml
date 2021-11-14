@@ -7,7 +7,7 @@
 
     </div>
 </form>
-<table class="table table-light table-hover">
+<table class="table">
     <tr>
         <th>ID</th>
         <th>Nombre</th>
@@ -29,11 +29,11 @@
     <td>@temp.Precio</td>
     <td>@temp.Dimensiones</td>
     <td>@temp.Descripcion</td>
-    <td><img class="img-rounded img-hover mg-3" src="~/img/@temp.Image" width="190" height="190"></td>
+    <td><img class="img-rounded img-hover mg-3" src="~/img/@temp.Foto" width="190" height="190"></td>
     <td>
-        <a type="button" href="javascript:;" onclick="actualizarProducto(@temp.Id); return false;">Actualizar</a>
+        <a class="btnTable" type="button" href="javascript:;" onclick="actualizarProducto(@temp.Id); return false;">Actualizar</a>
         |
-        <a type="button" href="javascript:;" onclick="eliminarProducto(@temp.Id); return false;">Eliminar</a>
+        <a class="btnTable" type="button" href="javascript:;" onclick="eliminarProducto(@temp.Id); return false;">Eliminar</a>
     </td>
 </tr>
     }
