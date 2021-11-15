@@ -12,6 +12,7 @@ namespace ProvedorCorion.Controllers
         public IActionResult Index()
         {
             HttpContext.Session.SetInt32("login",0);
+            HttpContext.Session.SetInt32("tomeylleve", 0);
             return View();
         }
     }

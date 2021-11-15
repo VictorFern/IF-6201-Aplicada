@@ -9,5 +9,6 @@ namespace ProvedorCorion.Models
     public class SessionModel
     {
         int login { get; set; }
+        int tomeylleve { get; set; }
     }
 }
