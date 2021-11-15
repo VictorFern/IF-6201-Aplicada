@@ -25,7 +25,21 @@ include_once 'public/headerTomeYLleve.php';
                     <td id="table"><?php echo $item[2] ?></td>
                     <td id="table">₡<?php echo $item[3] ?></td>
                     <td id="table">
-                        <input class="btn btn-primary" type="button" href="javascript:;"onclick="enviar('<?php echo $item[6]?>','<?php echo $item[1]?>','<?php echo $item[2]?>',<?php echo $item[3]?>,'<?php echo $item[4]?>','<?php echo $item[5]?>','<?php echo $item[7]?>',<?php echo $item[8]?>,'<?php echo $item[9]?>'); return false;" id="agregaCarrito" name="agregaCarrito" value="Enviar"/>
+                        <form enctype="multipart/form-data" id="<?php echo $item[0] ?>" name="<?php echo $item[0] ?>" action="?controlador=Producto&accion=enviarApi" method="post">
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Producto" value="<?php echo $item[1] ?>"required hidden/>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Producto" value="<?php echo $item[2] ?>"required hidden/>
+                            <input type="text" class="form-control" id="precio" name="precio" placeholder="Producto" value="<?php echo $item[3] ?>"required hidden/>
+                            <input type="text" class="form-control" id=dimension" name="dimension" placeholder="Producto" value="<?php echo $item[4] ?>"required hidden/>
+                            <input type="text" class="form-control" id="otras" name="otras" placeholder="Producto" value="<?php echo $item[5] ?>"required hidden/>
+                            <input type="text" class="form-control" id="marca" name="marca" placeholder="Producto" value="<?php echo $item[6] ?>"required hidden/>
+                            <input type="text" class="form-control" id="foto" name="foto" placeholder="Producto" value="<?php echo $item[7] ?>"required hidden/>
+                            <input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Producto" value="<?php echo $item[8] ?>"required hidden/>
+                            <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Producto" value="<?php echo $item[9] ?>"required hidden/>
+                            <div class="form-group">
+                                <input type="submit" class="btnSubmit" value="Enviar" />
+                            </div>
+                        </form>
+
                     </td>
                 </tr>
                 <?php
