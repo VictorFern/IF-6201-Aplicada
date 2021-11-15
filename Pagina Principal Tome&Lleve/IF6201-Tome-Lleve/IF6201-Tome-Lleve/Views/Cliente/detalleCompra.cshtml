@@ -3,9 +3,9 @@
     ViewData["Title"] = "Comprar Producto";
     Layout = "_LayoutCliente";
 }
-<div class="container">
+<div id="contenedorRegAdmin" class="container-fluid" style="margin-top: 50px">
     <div class="row justify-content-center align-items-center">
-        <div class="col-md-8 p-5">
+        <div id="registrarProduc" class="col-md-8 p-5" style="margin-top: 50px;background:#C0C0C0">
             <h1>Pagar Producto</h1>
             <form asp-action="pagarProducto">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>

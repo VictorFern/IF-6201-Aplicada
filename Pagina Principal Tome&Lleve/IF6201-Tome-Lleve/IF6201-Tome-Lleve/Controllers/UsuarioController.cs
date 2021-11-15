@@ -81,5 +81,28 @@ namespace IF6201_TomeYLleve.Controllers
                 return View("iniciarSesion");
             }
         }
+        public IActionResult cambiarContrasena()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult cambiarContrasena(UsuarioModel usuarioModel)
+        {
+            if (ModelState.IsValid)
+            {
+                string connectionString = Configuration["ConnectionStrings:DB_Connection"];
+                var connection = new SqlConnection(connectionString);
+                string sqlQuery = $"exec sp_cambiar_contrasenna @param_ALIAS='{usuarioModel.alias}', @param_CONTRASENNA='{usuarioModel.pass}'";
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    connection.Open();
+                    command.ExecuteReader();
+                    connection.Close();
+                }
+            }
+            return RedirectToAction("iniciarSesion");
+        }
     }
 }
+

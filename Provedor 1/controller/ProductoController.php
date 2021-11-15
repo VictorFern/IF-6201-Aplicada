@@ -39,7 +39,7 @@ class ProductoController {
             $uploadFileDir = './public/img/';
             $dest_path = $uploadFileDir . $newFileName;
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                $cliente->registrar($_POST['Nombre'], $_POST['Descripcion'], $_POST['Precio'], $_POST['Talla'], $_POST['Color'], $_POST['Marca'], $newFileName, $_POST['Categoria']);
+                $cliente->registrar($_POST['Nombre'], $_POST['Descripcion'], $_POST['Precio'], $_POST['Talla'], $_POST['Color'], $_POST['Marca'], $newFileName, $_POST['Categoria'],$_POST['Cantidad']);
                 $this->view->show("insertarProductoView.php", $cliente->mostrar_Categorias());
             }
         }
@@ -93,7 +93,7 @@ class ProductoController {
     public function actualizaProducto() {
         require 'model/ProductoModel.php';
         $cliente = new ProductoModel();
-        $cliente->actualizar($_POST['ID'], $_POST['NOMBRE'], $_POST['DESCRIPCION'], $_POST['PRECIO'], $_POST['TALLA'], $_POST['COLOR'], $_POST['MARCA'], $_POST['Categoria']);
+        $cliente->actualizar($_POST['ID'], $_POST['NOMBRE'], $_POST['DESCRIPCION'], $_POST['PRECIO'], $_POST['TALLA'], $_POST['COLOR'], $_POST['MARCA'], $_POST['Categoria'],$_POST['Cantidad']);
         $data['listado'] = $cliente->ver_Producto($_POST['ID']);
         $this->view->show("mostrarProductoView.php", $data);
     }
@@ -128,7 +128,13 @@ class ProductoController {
         require 'model/ProductoModel.php';
          $cliente = new ProductoModel();
         $data['seccion'] = $cliente->inicioSeccion($_POST['clave']);
-        $this->view->show("enviarView.php",null);
+        $data['listado'] = $cliente->mostrar_Producto();
+        $_SESSION['usuario'] = $data['seccion'];
+        $this->view->show("enviarView.php",$data);
+    }
+    public function cerrarSesion() {
+        session_destroy();
+        $this->view->show("loginView.php", null);
     }
 }
 

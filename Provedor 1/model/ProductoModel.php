@@ -14,14 +14,14 @@ class ProductoModel {
         require 'libs/SPDO.php';
         $this->db = SPDO::singleton();
     }
- public function registrar($nombre, $descripcion, $precio, $talla, $color, $marca, $foto, $idc) {
-        $consulta = $this->db->prepare("call sp_insetar_producto('" . $nombre . "','" . $descripcion . "'," . $precio . "," . $talla . ",'".$color."','".$marca."','".$foto."', ".$idc.");");
+ public function registrar($nombre, $descripcion, $precio, $talla, $color, $marca, $foto, $idc,$cantidad) {
+        $consulta = $this->db->prepare("call sp_insetar_producto('" . $nombre . "','" . $descripcion . "'," . $precio . "," . $talla . ",'".$color."','".$marca."','".$foto."', ".$idc.",".$cantidad.");");
         $consulta->execute();
         $consulta->closeCursor();
     }
 
-    public function actualizar($ID,$NOMBRE, $descripcion, $precio, $talla, $color, $marca,$categoria) {
-        $consulta = $this->db->prepare("call sp_actualizar_producto(".$ID.",'".$NOMBRE."','".$descripcion."',".$precio.",".$talla.",'".$color."','".$marca."',".$categoria.");");
+    public function actualizar($ID,$NOMBRE, $descripcion, $precio, $talla, $color, $marca,$categoria,$cantidad) {
+        $consulta = $this->db->prepare("call sp_actualizar_producto(".$ID.",'".$NOMBRE."','".$descripcion."',".$precio.",".$talla.",'".$color."','".$marca."',".$categoria.",".$cantidad.");");
         $consulta->execute();
         $consulta->closeCursor();
     }

@@ -323,6 +323,29 @@ namespace IF6201_TomeYLleve.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("iniciarSesion", "Usuario");
         }
+        public ActionResult bloquear(int id)
+        {
+            ProductoModel productoTemp = new ProductoModel();
+            if (ModelState.IsValid)
+            {
+                string connectioString = Configuration["ConnectionStrings:DB_Connection"];
+                using (SqlConnection connection = new SqlConnection(connectioString))
+                {
+                    string sqlQuery = $"sp_BLOQUEAR @param_ID='{id}'";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        connection.Open();
+                        SqlDataReader productoReader = command.ExecuteReader();
+
+
+                        connection.Close();
+                    }
+                }
+            }
+
+            return RedirectToAction("buscaEliminaActualiza");
+        }
     }
 
 

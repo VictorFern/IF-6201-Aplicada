@@ -40,10 +40,15 @@ include_once 'public/header.php';
                 <div class="form-group">
                     <input type="text" class="form-control" id="Marca" name="Marca" placeholder="Marca" value="" required/>
                 </div>
+                
+                 <div class="form-group">
+                    <input type="text" class="form-control" id="Cantidad" name="Cantidad" placeholder="Cantidad" value="" required/>
+                </div>
 
                 <div>
                     <input  type="file"  class="form-control" accept="image/png, .jpeg, .jpg, image/gif" id="imagen" name="imagen">
                 </div>
+                
 
                 <div class="form-group">
                     <input type="submit" class="btnSubmit" value="Registrar" />

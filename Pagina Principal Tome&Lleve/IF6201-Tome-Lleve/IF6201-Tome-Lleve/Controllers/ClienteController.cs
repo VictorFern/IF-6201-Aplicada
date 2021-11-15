@@ -19,7 +19,81 @@ namespace IF6201_TomeYLleve.Controllers
 
         public IConfiguration Configuration { get; }
 
-        
+        public List<object> sugerencia()
+        {
+            List<object> lista = new List<object>();
+
+            if (ModelState.IsValid)
+            {
+                string connectioString = Configuration["ConnectionStrings:DB_Connection"];
+                using (SqlConnection connection = new SqlConnection(connectioString))
+                {
+                    string sqlQuery = $"sp_SUGERENCIA";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        connection.Open();
+                        SqlDataReader productoReader = command.ExecuteReader();
+                        while (productoReader.Read())
+                        {
+                            CategoriaModel categoriaModel = new CategoriaModel();
+                            categoriaModel.categoria = productoReader["CATEGORIA"].ToString();
+                            ProveedorModel proveedorModel = new ProveedorModel();
+                            proveedorModel.proveedor = productoReader["PROVEEDOR"].ToString();
+                            ProductoModel productoTemp = new ProductoModel(Int32.Parse(productoReader["IDP"].ToString())
+                                                                           , productoReader["NOMBREP"].ToString()
+                                                                           , productoReader["MARCA"].ToString()
+                                                                           , productoReader["DESCRIPCION"].ToString()
+                                                                           , Int32.Parse(productoReader["PRECIO"].ToString())
+                                                                           , productoReader["DIMENSION"].ToString()
+                                                                           , productoReader["OTRASCARACTERISTICAS"].ToString()
+                                                                           , productoReader["FOTO"].ToString()
+                                                                           , Int32.Parse(productoReader["CANTIDAD"].ToString())
+                                                                           , categoriaModel
+                                                                           , proveedorModel);
+                            lista.Add(productoTemp);
+                        }
+                        connection.Close();
+                    }
+                }
+            }
+            if (lista.Count != 0)
+            {
+                ViewData["Sugerencia"] = "sugerencia";
+                return lista;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+        public int cant()
+        {
+            int cant = 0;
+            int valor = (int)HttpContext.Session.GetInt32("variableInt");
+            if (ModelState.IsValid)
+            {
+                string connectioString = Configuration["ConnectionStrings:DB_Connection"];
+                using (SqlConnection connection = new SqlConnection(connectioString))
+                {
+                    string sqlQuery = $"sp_CANTIDADCARRITO @param_CEDULA='{valor}'";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.CommandType = System.Data.CommandType.Text;
+                        connection.Open();
+                        SqlDataReader productoReader = command.ExecuteReader();
+                        while (productoReader.Read())
+                        {
+
+                            cant = Int32.Parse(productoReader["CANTIDAD"].ToString());
+                        }
+                        connection.Close();
+                    }
+                }
+            }
+            return cant;
+        }
         public IActionResult Index()
         {
             List<object> lista = new List<object>();
@@ -59,6 +133,8 @@ namespace IF6201_TomeYLleve.Controllers
             }
 
             ViewBag.Producto = lista;
+            ViewBag.Sugerencia = sugerencia();
+            ViewBag.Cant = cant();
             return View();
         }
         public IActionResult registrar()
@@ -123,6 +199,7 @@ namespace IF6201_TomeYLleve.Controllers
                 }
             }
             ViewBag.Lista = lista;
+            ViewBag.Cant = cant();
             return View();
         }
 
@@ -166,6 +243,7 @@ namespace IF6201_TomeYLleve.Controllers
             int valor = (int)HttpContext.Session.GetInt32("variableInt");
             ViewBag.Session = valor;
             ViewBag.Detalle = lista;
+            ViewBag.Cant = cant();
             return View();
         }
 
@@ -225,6 +303,7 @@ namespace IF6201_TomeYLleve.Controllers
             ViewBag.Session = valor;
             ViewBag.Carrito = lista;
             ViewBag.SubTotal = subTotalTemp;
+            ViewBag.Cant = cant();
             return View();
         }
         public IActionResult UpdateCarrito(int idP, int idU, int cant)
@@ -308,6 +387,7 @@ namespace IF6201_TomeYLleve.Controllers
                     }
                 }
             }
+            ViewBag.Cant = cant();
             return View(comprarProducto);
         }
 
@@ -318,6 +398,7 @@ namespace IF6201_TomeYLleve.Controllers
             comprar.monto = monto;
             string direccion = comprar.provincia + ", " + comprar.canton + ", " + comprar.detalle;
             comprar.direccion = direccion;
+            ViewBag.Cant = cant();
             return View(comprar);
         }
 
@@ -339,6 +420,7 @@ namespace IF6201_TomeYLleve.Controllers
                     connection.Close();
                 }
             }
+            ViewBag.Cant = cant();
             return RedirectToAction("Index");
         }
 
@@ -382,6 +464,7 @@ namespace IF6201_TomeYLleve.Controllers
                 }
             }
             comprarCarrito.monto = subTotalTemp;
+            ViewBag.Cant = cant();
             return View(comprarCarrito);
         }
         [HttpPost]
@@ -402,6 +485,7 @@ namespace IF6201_TomeYLleve.Controllers
                     connection.Close();
                 }
             }
+            ViewBag.Cant = cant();
             return RedirectToAction("verCarrito");
         }
     }

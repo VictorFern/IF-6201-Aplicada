@@ -18,7 +18,8 @@ CREATE PROCEDURE sp_insetar_producto(param_NOMBRE VARCHAR(50)
                                     , param_COLOR VARCHAR(50)
                                     , param_MARCA VARCHAR(50)
                                     , param_FOTO VARCHAR(220)
-                                    , param_IDC INT)
+                                    , param_IDC INT
+                                    , param_CANTIDAD INT)
 
 BEGIN
 	DECLARE param_ID INT; 
@@ -30,6 +31,7 @@ BEGIN
     , COLOR
     , MARCA
     , IMAGEN
+    ,CANTIDAD
     ,IsDelete
     )VALUES(
     param_NOMBRE
@@ -39,6 +41,7 @@ BEGIN
     ,param_COLOR
     ,param_MARCA
     ,param_FOTO
+    ,param_CANTIDAD
     ,0
     );
     SET param_ID = (SELECT ID FROM tb_PRODUCTO order by ID desc LIMIT 1);
@@ -63,6 +66,7 @@ BEGIN
     , P.COLOR
     , P.MARCA
     , P.IMAGEN
+    , P.CANTIDAD
     , C.NOMBRE AS CATEGORIA
     FROM tb_PRODUCTO P
     JOIN tb_producto_categoria PC
@@ -76,15 +80,21 @@ DELIMITER $$
 CREATE PROCEDURE sp_mostrar_producto()
 BEGIN
 	SELECT
-    ID
-    , NOMBRE
-    , DESCRIPCION
-    , PRECIO
-    , TALLA
-    , COLOR
-    , MARCA
-    , IMAGEN
-    FROM tb_PRODUCTO
+    P.ID
+    , P.NOMBRE
+    , P.DESCRIPCION
+    , P.PRECIO
+    , P.TALLA
+    , P.COLOR
+    , P.MARCA
+    , P.IMAGEN
+    , P.CANTIDAD
+    ,C.NOMBRE Categoria
+    FROM tb_PRODUCTO P
+		JOIN tb_producto_categoria PC
+			ON P.ID = PC.CODIGOP
+			JOIN tb_categoria C
+				ON C.ID = PC.CODIGOC
     where IsDelete!=1;
 END $$
 
@@ -102,6 +112,7 @@ begin
 		,producto.COLOR
 		,producto.MARCA
 		,producto.IMAGEN
+        ,producto.CANTIDAD
         ,categoria.nombre Categoria
     from tb_producto as producto
 		join tb_producto_categoria as producto_categoria
@@ -121,7 +132,8 @@ CREATE PROCEDURE sp_actualizar_producto(param_ID INT
                                     , param_TALLA INT
                                     , param_COLOR VARCHAR(50)
                                     , param_MARCA VARCHAR(50)
-                                    , param_CATEGORIA INT)
+                                    , param_CATEGORIA INT
+                                    , param_CANTIDAD INT)
 BEGIN
 
 UPDATE tb_producto
@@ -132,6 +144,7 @@ UPDATE tb_producto
     ,TALLA=param_TALLA
 	,COLOR=param_COLOR
     , MARCA=param_MARCA
+    ,CANTIDAD = param_CANTIDAD
     WHERE ID = param_ID;
     
 UPDATE tb_producto_categoria

@@ -64,6 +64,37 @@
   box-sizing: border-box;
 }
 
+header a span.number {
+    position: relative;
+    left: 25px;
+    top: -12px;
+    color: #000;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+@media (max-width: 991px) {
+    header a img {
+        width: 30px;
+        margin-left: 10px;
+    }
+
+    header a span.number {
+        left: 38px;
+        top: -14px;
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 991px) {
+    .navbar-search, .navbar-login {
+        position: static !important;
+    }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;

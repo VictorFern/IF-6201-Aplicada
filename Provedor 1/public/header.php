@@ -12,7 +12,6 @@
         <script type="text/javascript" src="public/js/jquery-ui.js"></script>
 
         <link rel="shortcut icon" type="image/x-icon" href="public/img/icon.ico"/>     
-        <script type="text/javascript" src="public/js/manipularcanvas.js"></script>
 
     </script>
 </head>

@@ -12,9 +12,9 @@
         </button>
     </div>
 }
-<div class="container">
+<div id="contenedorRegAdmin" class="container-fluid" style="margin-top: 50px">
     <div class="row justify-content-center align-items-center">
-        <div class="col-md-8 p-5">
+        <div id="registrarProduc" class="col-md-8 p-5">
             <h1>@ViewData["Title"]</h1>
             <form asp-action="actualizar" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -51,7 +51,7 @@
                     <span asp-validation-for="otrascaracteristicas" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input asp-for="categoriaModel.categoria" class="form-control" placeholder="Nombre Producto" readonly/>
+                    <input asp-for="categoriaModel.categoria" class="form-control" placeholder="Nombre Producto" readonly />
 
                     <span asp-validation-for="nombre" class="text-danger"></span>
                 </div>
@@ -61,8 +61,8 @@
                     <span asp-validation-for="proveedorModel.proveedor" class="text-danger"></span>
 
                 </div>
-                
-                
+
+
                 <div class="form-group">
                     <input type="submit" value="Actualizar Producto" class="btn btn-primary" />
                 </div>

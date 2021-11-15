@@ -4,9 +4,9 @@
     Layout = "_LayoutCliente";
 }
 
-<div class="container">
+<div id="contenedorRegAdmin" class="container-fluid" style="margin-top: 50px">
     <div class="row justify-content-center align-items-center">
-        <div class="col-md-8 p-5">
+        <div id="registrarProduc" class="col-md-8 p-5" style="margin-top: 50px;background:#C0C0C0">
             <h1>Comprar Producto</h1>
             <form asp-action="detalleCompra">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="provincia" class="control-label">Provinvia</label>
-                    <input asp-for="provincia" class="form-control"  required />
+                    <input asp-for="provincia" class="form-control" required />
                     <span asp-validation-for="provincia" class="text-danger"></span>
                 </div>
                 <div class="form-group">

@@ -32,8 +32,11 @@ include_once 'public/header.php';
                 <div class="form-group">
                     <input type="text" class="form-control" id="MARCA" name="MARCA" placeholder="MARCA" value="<?php echo $vars['producto'][0][6] ?>" required />
                 </div>
+                 <div class="form-group">
+                    <input type="text" class="form-control" id="Cantidad" name="Cantidad" placeholder="CANTIDAD" value="<?php echo $vars['producto'][0][8] ?>" required />
+                </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="CATEGORIA" name="CATEGORIA" placeholder="CATEGORIA" value="<?php echo $vars['producto'][0][8] ?>" required />
+                    <input type="text" class="form-control" id="CATEGORIA" name="CATEGORIA" placeholder="CATEGORIA" value="<?php echo $vars['producto'][0][9] ?>" required />
                 </div>
                 <div class="form-group">
                     <select class="form-control" placeholder="Categoría" id="Categoria" name="Categoria">

@@ -36,12 +36,14 @@
                     <td>@tem.proveedorModel.proveedor</td>
                     <td>
                         @Html.ActionLink("Actualizar", "actualizar", new { id = tem.id })
-                   
+
                     </td>
                     <td>
                         @Html.ActionLink("Eliminar", "eliminar", new { id = tem.id })
                     </td>
-
+                    <td>
+                        @Html.ActionLink("Bloquear", "bloquear", new { id = tem.id })
+                    </td>
 
                 </tr>
                 }

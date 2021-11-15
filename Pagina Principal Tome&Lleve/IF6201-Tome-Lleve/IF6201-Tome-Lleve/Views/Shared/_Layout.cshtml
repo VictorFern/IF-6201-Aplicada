@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #C0C0C0;">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Usuario" asp-action="iniciarSesion">IF6201_TomeYLleve</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -37,11 +37,18 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - IF6201_TomeYLleve - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container-fluid text-center p-3" id="p">
+            <p>Tome&Lleve</p>
+            <p>Página con fines educativo</p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
