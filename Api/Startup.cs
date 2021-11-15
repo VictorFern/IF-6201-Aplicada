@@ -26,7 +26,7 @@ namespace API_TOME_Y_LLEVE
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -43,7 +43,7 @@ namespace API_TOME_Y_LLEVE
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API_TOME_Y_LLEVE v1"));
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();

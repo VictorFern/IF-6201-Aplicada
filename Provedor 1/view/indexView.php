@@ -15,7 +15,7 @@ include_once 'public/header.php';
                 </div>
                 <figure>
                     <a href="?controlador=Producto&accion=mostrarProducto&producto=<?php echo $item[0];?>">
-                        <img class="fit-image  rounded d-block m-l-none" src="public/img/<?php echo $item[7];?>" alt="Responsive image">
+                        <img class="fit-image  rounded d-block m-l-none" src="public/img/<?php echo $item[7];?>" alt="Responsive image" width="100" height="100">
                     </a>
                 </figure>
                 <div class="text">

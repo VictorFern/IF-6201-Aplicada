@@ -14,11 +14,13 @@ using System.Web;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using Microsoft.AspNetCore.Cors;
 
 namespace API_TOME_Y_LLEVE.Controllers
 {
     [ApiController]
     [Route("api/Productos")]
+    
     public class ProductoController : ControllerBase
     {
         private readonly IConfiguration Configuration;
@@ -73,7 +75,7 @@ namespace API_TOME_Y_LLEVE.Controllers
 
         [Route("Registro")]
         [HttpPost]
-        public async Task<ActionResult<String>> Registro(Producto producto)
+        public async Task<ActionResult<String>> Registro([FromBody]Producto producto)
         {
 
             SqlConnection cn = new SqlConnection(Configuration.GetConnectionString("Default"));
