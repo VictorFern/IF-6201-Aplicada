@@ -4,7 +4,7 @@ include_once 'public/header.php';
 <div id="contenedorRegistroAdmin" class="container-fluid" style="margin-top: 55px">
     <div class="row">
         <div  class="col-md-3"></div>
-        <div id="registraPago" class="col-md-6"style="margin-top: 100px">
+        <div id="buscaElimina" class="col-md-6"style="margin-top: 100px">
             <h1>Buscar producto para Eliminar</h1>
             <form  id="idPro" class="col-sm-12" style="margin-top:50px; margin-bottom:100px;" action="?controlador=Producto&accion=mostrarEliminar" method="post">
                 

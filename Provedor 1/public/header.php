@@ -5,21 +5,32 @@
         <meta charset="utf-8"/>
         <meta name="description" content="VicProdux de limpieza y proteción" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" type="text/css" href="public/css/bootstrapssss.css"/>
+        <link rel="stylesheet" type="text/css" href="public/css/actualFinal1.css"/>
         <script type="text/javascript" src="public/js/bootstrap.js"></script>
         <script type="text/javascript" src="public/js/jquery.js"></script>
         <script type="text/javascript" src="public/js/jquery-3.2.1.js"></script>
         <script type="text/javascript" src="public/js/jquery-ui.js"></script>
 
         <link rel="shortcut icon" type="image/x-icon" href="public/img/icon.ico"/>     
+        <script type="text/javascript" src="public/js/manipularcanvas.js"></script>
 
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+    <div id="top-header">
+        <div class="container">
+            <ul class="header-links pull-left">
+                <li><a href="#"><i class="fa fa-phone"></i> +506-25100101</a></li>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> caitecaite7@gmail.com</a></li>
+                <li><a href="#"><i class="fa fa-map-marker"></i> Turrialba,Cartago,Costa Rica</a></li>
+            </ul>
 
-            <a class="navbar-brand" href="?controlador=Producto&accion=inicio"">Caite</a>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div   class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+
+            <a class="navbar-brand" href="?controlador=Producto&accion=inicio""> <img  src="public/img/caiteFinal.png" alt="Responsive image"></a>
 
             <button
                 class="navbar-toggler"
@@ -47,7 +58,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="?controlador=Producto&accion=eliminar">Eliminar Producto</a>
                     </li>
-                     
+
                     <form class="d-flex" name="buscar" action="?controlador=Producto&accion=buscarProducto" method="post">
                         <input
                             class="form-control me-2"
@@ -58,20 +69,21 @@
                             id="Nombre" name="Nombre"
 
                             />
-                        <button class="btn btn-outline-success" type="submit">
+                        <button class="btn primary-btn" type="submit" style="background-color: #ff1414;border-color: black">
                             Buscar
                         </button>
                     </form>
-                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-item">
-                            <a class="nav-link" href="?controlador=Producto&accion=login"><span class="glyphicon glyphicon-log-in"></span> Tome&Lleve</a>
-                        </li>
-                    </ul>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #088d1c "  href="?controlador=Producto&accion=login"><span class="glyphicon glyphicon-log-in"></span> Tome&Lleve</a>
+                    </li>
+                </ul>
+
             </div>
         </div>
     </nav>
     <div class="container"style="margin-top:50px; margin-bottom:100px;">
-        
-   
+
+
 

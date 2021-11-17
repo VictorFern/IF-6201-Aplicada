@@ -142,7 +142,7 @@ class ProductoController {
     public function enviarApi() {
         $apiurl = 'http://apitomeylleve-001-site1.etempurl.com/api/Productos/Registro';
         $producto = array('id' => 0, 'nombre' => $_POST['nombre'], 'marca' => $_POST['marca'], 'descripcion' => $_POST['descripcion'], 'precio' => $_POST['precio'], 'dimensiones' => $_POST['dimension'], 'otrasCaracteristicas' => $_POST['otras'], 'foto' => $_POST['foto'], 'categoria' => $_POST['categoria'], 'idProveedor' => 1, 'cantidad' => $_POST['cantidad']);
-        
+
         $data_array = json_encode($producto);
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $apiurl);
@@ -157,8 +157,12 @@ class ProductoController {
         require 'model/ProductoModel.php';
         $cliente = new ProductoModel();
         $data['listado'] = $cliente->mostrar_Producto();
+        echo'<script type="text/javascript">
+            alert("Producto enviado");
+            </script>';
         $this->view->show("enviarView.php", $data);
     }
+
 }
 
 // fin clase

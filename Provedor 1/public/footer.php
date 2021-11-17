@@ -1,13 +1,10 @@
-
  </div>
 <footer class="font-small border-top footer text-muted">
-
-        <div class="container-fluid text-center p-3" id="p">
+        <div id="footer" class="container-fluid text-center p-3" >
             <p>Caite</p>
-            <p>Página con fines educativo</p>
+            <p>Página con fines educativos</p>
         </div>
-
-    </footer>
+</footer>
 
 </body>
 </html>
