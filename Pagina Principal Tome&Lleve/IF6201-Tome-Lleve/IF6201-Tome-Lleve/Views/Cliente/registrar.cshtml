@@ -1,0 +1,55 @@
+﻿@model IF6201_TomeYLleve.Models.ClienteModel
+@{
+    ViewData["Title"] = "Registrar";
+    Layout = "_Layout";
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Success"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
+            <span aria-hidden="false">&times;</span>
+        </button>
+    </div>
+}
+    <section class="vh-100" style="background-color: #C0C0C0; border-radius: 25px; ">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                    <div class="card" style="border-radius:1rem;">
+                        <div class="row g-0">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                <img  src="~/img/fondo.jpeg" width="420" height="600" alt="login form" style="border-radius: 1rem 0 0 1rem;" />
+                            </div>
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-black">
+                                    <form id="registraCliente" asp-action="registrar" method="POST">
+                                        <h1>Registrar Cliente</h1><br>
+
+
+                                        <input type="text" style=" margin-bottom: 15px;" class="form-control" asp-for="cedula"
+                                               placeholder="Cedula" required /><br>
+
+                                        <input type="text" style=" margin-bottom: 15px;" class="form-control" asp-for="nombre"
+                                               placeholder="Nombre" required /><br>
+
+                                        <input type="text" style=" margin-bottom: 15px;" class="form-control" asp-for="apellido"
+                                               placeholder="Apellido" required /><br>
+
+                                        <input type="text" style=" margin-bottom: 15px;" class="form-control" asp-for="alias"
+                                               placeholder="Nombre Usuario" required /><br>
+
+                                        <input type="password" style=" margin-bottom: 15px;" class="form-control" asp-for="contrasenna"
+                                               placeholder="Contraseña" required /><br>
+
+                                        <button type="submit" class="btn btn-success">Registrar</button>
+                                        <div class="col-sm-3"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,50 @@
+﻿@model IF6201_TomeYLleve.Models.ProductoModel
+@{
+    ViewData["Title"] = "Buscar Producto";
+    Layout = "_LayoutAdmin";
+}
+<div class="container">
+    <div class="row">
+        @foreach (ProductoModel tem in ViewBag.Lista)
+        {
+            <div class="col-lg-6" style="margin-top:50px;">
+                <div id="box1">
+                    <figure>
+                        <img class="fit-image  rounded d-block m-l-none" src="~/img/@tem.foto" alt="Responsive image">
+                    </figure>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div id="box2">
+                    <div class="title">
+                        <br>
+                        <h4>
+                            Producto: @tem.nombre
+                        </h4>
+                    </div>
+                    <div class="title">
+                        <br>
+                        <h4>
+                            Detalle: @tem.descripcion
+                        </h4>
+                    </div>
+                    <div class="title">
+                        <br>
+                        <h4>
+                            Precio: ₡@tem.precio
+                        </h4>
+                    </div>
+                    <div class="title">
+                        <br>
+                        <h4>
+                            Proveedor: @tem.proveedorModel.proveedor
+                        </h4>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <hr class="linea">
+        }
+    </div>
+    
+</div>

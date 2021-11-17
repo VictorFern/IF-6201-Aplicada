@@ -1,0 +1,79 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - IF6201_TomeYLleve</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstraps.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #000000;">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Admin" asp-action="Index"><img src="~/img/TOME & LLEVE.png" height="36" alt="Responsive image"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse align-items-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-light  active" asp-area="" asp-controller="Admin" asp-action="Index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light " asp-area="" asp-controller="Admin" asp-action="registrar">Nuevo Producto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light " asp-area="" asp-controller="Admin" asp-action="buscaEliminaActualiza">Actualizar/Eliminar Producto</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-collapse align-items-center">
+                        <form class="form-inline my-2 my-lg-0" name="buscar" asp-action="buscar" method="post">
+                            <input class="form-control mr-sm-2" id="nombre" name="nombre" type="search" placeholder="Buscar producto" aria-label="Search" required />
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                Buscar
+                            </button>
+                        </form>
+                    </ul>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-right align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-light " asp-area="" asp-controller="Admin" asp-action="cerrarSesion">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container-fluid text-center p-3" id="p">
+            <p>Tome&Lleve</p>
+            <p>Página con fines educativo</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

@@ -1,0 +1,77 @@
+﻿@model IF6201_TomeYLleve.Models.ComprarProducto
+@{
+    ViewData["Title"] = "Comprar Producto";
+    Layout = "_LayoutCliente";
+}
+<div id="contenedorRegAdmin" class="container-fluid" style="margin-top: 50px">
+    <div class="row justify-content-center align-items-center">
+        <div id="registrarProduc" class="col-md-8 p-5" style="margin-top: 50px;background:#C0C0C0">
+            <h1>Pagar Producto</h1>
+            <form asp-action="pagarProducto">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <input asp-for="productoModel.id" class="form-control" placeholder="id" readonly hidden />
+                    <span asp-validation-for="productoModel.id" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="productoModel.nombre" class="control-label">Producto</label>
+                    <input asp-for="productoModel.nombre" class="form-control" placeholder="producto" readonly />
+                    <span asp-validation-for="productoModel.nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="cantidad" class="control-label">Cantidad</label>
+                    <input asp-for="cantidad" class="form-control" placeholder="Cantidad" required readonly />
+                    <span asp-validation-for="cantidad" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="monto" class="control-label">Monto a pagar</label>
+                    <input asp-for="monto" class="form-control" placeholder="monto a pagar" readonly />
+                    <span asp-validation-for="productoModel.precio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="provincia" class="form-control" placeholder="provincia" readonly hidden />
+                    <span asp-validation-for="provincia" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="canton" class="form-control" placeholder="canton" readonly hidden />
+                    <span asp-validation-for="canton" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="detalle" class="form-control" placeholder="detalle" readonly hidden />
+                    <span asp-validation-for="detalle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="direccion" class="control-label">Dirección de envio</label>
+                    <input asp-for="direccion" class="form-control" required readonly />
+                    <span asp-validation-for="direccion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="tipo" class="control-label">Tipo de Tarjeta</label>
+                    <select asp-for="tipo" class="form-control">
+                        <option value="Visa">Visa</option>
+                        <option value="MasterCard">MasterCard</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="numero" class="control-label">Número Tarjeta</label>
+                    <input asp-for="numero" class="form-control" placeholder="####-####-####-####" required />
+                    <span asp-validation-for="numero" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="codigoSeguridad" class="control-label">CVV</label>
+                    <input asp-for="codigoSeguridad" class="form-control" placeholder="Codigo Seguridad" required />
+                    <span asp-validation-for="codigoSeguridad" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="fechaVencimiento" class="control-label">Fecha de vencimiento</label>
+                    <input type="month" class="form-control" asp-for="fechaVencimiento" required />
+                    <span asp-validation-for="fechaVencimiento" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Comprar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

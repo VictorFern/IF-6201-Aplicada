@@ -1,0 +1,43 @@
+﻿@model IF6201_TomeYLleve.Models.UsuarioModel
+@{
+    ViewData["Title"] = "IniciarSesion";
+    Layout = "_Layout";
+}
+<section class="vh-100" style="background-color: #C0C0C0; border-radius: 25px; ">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card" style="border-radius:1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img  src="~/img/fondo.jpeg" width="400" height="425" alt="login form" style="border-radius: 1rem 0 0 1rem;" />
+                        </div>
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+                                <form id="iniciaSesion" asp-action="IniciarSesion" method="POST">
+                                    <h1>Iniciar Sesión</h1>
+                                    <input type="text" style=" margin-bottom: 15px;" class="form-control" asp-for="alias" placeholder="Nombre de usuario" required />
+
+                                    <input type="password" style="margin-bottom: 15px;" class="form-control" asp-for="pass" placeholder="Contraseña" required />
+
+                                    <button type="submit" class="btn btn-success">Iniciar Sesión</button>
+                                    @if (ViewData["Error"] != null)
+                                    {
+                                        <div class="red">
+                                            <script>alert("Datos incorrectos")</script>
+
+                                        </div>
+                                    }
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">
+                                        ¿Ólvido su contraseña?
+                                        <a asp-controller="Usuario" asp-action="cambiarContrasena" style="color: #393f81;">Cambiar contraseña</a>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

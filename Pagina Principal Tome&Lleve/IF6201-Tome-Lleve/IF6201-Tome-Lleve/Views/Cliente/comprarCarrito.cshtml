@@ -1,0 +1,74 @@
+﻿@model IF6201_TomeYLleve.Models.ComprarCarrito
+@{
+    ViewData["Title"] = "Cliente";
+    Layout = "_LayoutCLiente";
+}
+
+<div id="contenedorRegAdmin" class="container-fluid" style="margin-top: 50px">
+    <div class="row justify-content-center align-items-center">
+        <div id="registrarProduc" class="col-md-8 p-5" style="margin-top: 50px;background:#C0C0C0">
+            <h1>Pagar Producto</h1>
+            <dl class="row">
+                @foreach (ProductoModel temp in Model.productoModel)
+                {
+                    <dt class="col-sm-2">
+                        <label asp-for="@temp.nombre" class="control-label">@temp.cantidad @temp.nombre</label>
+                    </dt>
+                    <dd class="col-sm-10">
+                        ₡ @Html.DisplayFor(model => temp.precioCantidad)
+                    </dd>
+                }
+                <dt class="col-sm-2">
+                    <label asp-for="monto" class="control-label">Total a pagar</label>
+                </dt>
+                <dd class="col-sm-10">
+                    ₡ @Html.DisplayFor(model => model.monto)
+                </dd>
+            </dl>
+            <form asp-action="pagarCarrito">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="provincia" class="control-label">Provincia</label>
+                    <input asp-for="provincia" class="form-control" required />
+                    <span asp-validation-for="provincia" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="canton" class="control-label">Cantón</label>
+                    <input asp-for="canton" class="form-control" required />
+                    <span asp-validation-for="canton" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="detalle" class="control-label">Otras señas</label>
+                    <input asp-for="detalle" class="form-control" required />
+                    <span asp-validation-for="detalle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="tipo" class="control-label">Tipo de Tarjeta</label>
+                    <select asp-for="tipo" class="form-control">
+                        <option value="Visa">Visa</option>
+                        <option value="MasterCard">MasterCard</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="numero" class="control-label">Número Tarjeta</label>
+                    <input asp-for="numero" class="form-control" placeholder="####-####-####-####" required />
+                    <span asp-validation-for="numero" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="codigoSeguridad" class="control-label">CVV</label>
+                    <input asp-for="codigoSeguridad" class="form-control" placeholder="Codigo Seguridad" required />
+                    <span asp-validation-for="codigoSeguridad" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="fechaVencimiento" class="control-label">Fecha de vencimiento</label>
+                    <input type="month" class="form-control" asp-for="fechaVencimiento" required />
+                    <span asp-validation-for="fechaVencimiento" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Comprar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

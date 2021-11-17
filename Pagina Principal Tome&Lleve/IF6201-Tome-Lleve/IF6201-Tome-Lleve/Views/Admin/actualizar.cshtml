@@ -1,0 +1,72 @@
+﻿@model IF6201_TomeYLleve.Models.ProductoModel
+@{
+    ViewData["Title"] = "Actualizar Producto";
+    Layout = "_LayoutAdmin";
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Success"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
+            <span aria-hidden="false">&times;</span>
+        </button>
+    </div>
+}
+<div id="contenedorRegAdmin" class="container-fluid" style="margin-top: 50px">
+    <div class="row justify-content-center align-items-center">
+        <div id="registrarProduc" class="col-md-8 p-5">
+            <h1>@ViewData["Title"]</h1>
+            <form asp-action="actualizar" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input asp-for="nombre" class="form-control" placeholder="Nombre Producto" />
+                    <span asp-validation-for="nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="marca" class="form-control" placeholder="Marca Producto" />
+                    <span asp-validation-for="marca" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="precio" class="form-control" placeholder="Precio Producto" />
+                    <span asp-validation-for="precio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" asp-for="dimension" placeholder="Dimension Producto" rows="4" style="resize: none;"></textarea>
+                    <span asp-validation-for="dimension" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="file" asp-for="foto" name="files" class="form-control" accept="image/png, .jpeg, .jpg, image/gif" id="imagen" name="imagen">
+                    <span asp-validation-for="foto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="cantidad" class="form-control" placeholder="Cantidad Producto" required />
+                    <span asp-validation-for="cantidad" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" asp-for="descripcion" placeholder="Descripción Producto" rows="4" style="resize: none;"></textarea>
+                    <span asp-validation-for="descripcion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" asp-for="otrascaracteristicas" placeholder="Otras Caracteristicas" rows="4" style="resize: none;"></textarea>
+                    <span asp-validation-for="otrascaracteristicas" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="categoriaModel.categoria" class="form-control" placeholder="Nombre Producto" readonly />
+
+                    <span asp-validation-for="nombre" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input asp-for="proveedorModel.proveedor" class="form-control" readonly />
+                    <span asp-validation-for="proveedorModel.proveedor" class="text-danger"></span>
+
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Actualizar Producto" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
