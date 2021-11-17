@@ -36,7 +36,7 @@ include_once 'public/headerTomeYLleve.php';
                             <input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Producto" value="<?php echo $item[8] ?>"required hidden/>
                             <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Producto" value="<?php echo $item[9] ?>"required hidden/>
                             <div class="form-group">
-                                <input type="submit" class="btnSubmit" value="Enviar" />
+                                <input class="btn btn-primary" type="submit" id="actualiza" value="Enviar" />
                             </div>
                         </form>
 

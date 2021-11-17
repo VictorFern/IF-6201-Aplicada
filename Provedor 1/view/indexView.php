@@ -7,7 +7,7 @@ include_once 'public/header.php';
     <?php
     foreach ($vars['listado'] as $item) {
         ?>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div id="mostrarProductos" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="box-part text-center">
                 <div class="title">
                     <br>
@@ -15,7 +15,7 @@ include_once 'public/header.php';
                 </div>
                 <figure>
                     <a href="?controlador=Producto&accion=mostrarProducto&producto=<?php echo $item[0];?>">
-                        <img class="fit-image  rounded d-block m-l-none" src="public/img/<?php echo $item[7];?>" alt="Responsive image" width="100" height="100">
+                        <img class="fit-image  rounded d-block m-l-none" src="public/img/<?php echo $item[7];?>" alt="Responsive image">
                     </a>
                 </figure>
                 <div class="text">
