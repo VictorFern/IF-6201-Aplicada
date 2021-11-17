@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
 const url = 'http://localhost:8080/API_PUMBA/products/';
+const url2 = "http://apitomeylleve-001-site1.etempurl.com/api/Productos/";
 
 
 export class App extends Component {
@@ -24,8 +25,10 @@ export class App extends Component {
       precio: 0,
       dimensiones: '',
       foto: '',
-      idProveedor: 0,
-      idCategoria: 0
+      idProveedor: 2,
+      otrasCaracteristicas: 'no disponible',
+      categoria: 'licores',
+      cantidad: 1
 
     }
   };
@@ -49,8 +52,10 @@ export class App extends Component {
         precio: product.precio,
         dimensiones: product.dimensiones,
         foto: product.foto,
-        id_proveedor: product.idProveedor,
-        id_categoria: product.idCategoria
+        idproveedor: 2,
+        otrascaracteristicas: 'no disponible',
+        categoria: 'licores',
+        cantidad: 1
       }
     })
   }
@@ -103,6 +108,21 @@ export class App extends Component {
 
   }
 
+  
+
+  sendProduct = async () => {
+
+    delete this.state.form.id;
+    await axios.post(url2 + 'Registro', this.state.form)
+      .then(response => {
+        this.modalInsert();
+        this.getProducts();
+      }).catch(error => {
+        console.log(error.message);
+        console.log(this.state.form);
+      })
+  }
+
 
   handleChange = async e => {
 
@@ -128,6 +148,17 @@ export class App extends Component {
     return (
 
       <div className="App">
+
+        <a href='' target='_blank'><img src='https://i.postimg.cc/Vv6hfWZN/logo512.png' border='0' alt='logo512'/></a>
+        <br /><br /><br />
+        <a href="http://apitomeylleve-001-site1.etempurl.com/api/Productos/getKey/2" target="_blank">solicitar key Tome & Lleve</a>
+
+        <br /><br /><br />
+
+        <input type="text" name="key" id="key" /> 
+        <a href="http://apitomeylleve-001-site1.etempurl.com/api/Productos/login/IF6201-Proyecto-Aplicada-2021" target="_blank">acceder Tome & Lleve</a>
+
+        
         <br /><br /><br />
         <button className="btn btn-success" onClick={() => { this.setState({ form: null, modalType: 'insert' }); this.modalInsert() }}>Agregar producto</button>
         <br /><br />
@@ -211,6 +242,7 @@ export class App extends Component {
             }
 
             <button className="btn btn-danger" onClick={() => this.deleteProduct()}>Eliminar</button>
+            <button className="btn btn-danger" onClick={() => this.sendProduct()}>Enviar a T & LL</button>
             <button className="btn btn-danger" onClick={() => this.modalInsert()}>Cancelar</button>
           </ModalFooter>
         </Modal>
