@@ -87,12 +87,14 @@ namespace IF6201_TomeYLleve.Controllers
                         {
 
                             cant = Int32.Parse(productoReader["CANTIDAD"].ToString());
+                            
                         }
                         connection.Close();
                     }
                 }
             }
-            return cant;
+         
+                return cant;     
         }
         public IActionResult Index()
         {

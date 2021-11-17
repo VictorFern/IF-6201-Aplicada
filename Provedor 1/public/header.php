@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div   class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-            <a class="navbar-brand" href="?controlador=Producto&accion=inicio""> <img  src="public/img/caiteFinal.png" alt="Responsive image"></a>
+            <a class="navbar-brand" href="?controlador=Producto&accion=inicio"> <img  src="public/img/caiteFinal.png" alt="Responsive image"></a>
 
             <button
                 class="navbar-toggler"

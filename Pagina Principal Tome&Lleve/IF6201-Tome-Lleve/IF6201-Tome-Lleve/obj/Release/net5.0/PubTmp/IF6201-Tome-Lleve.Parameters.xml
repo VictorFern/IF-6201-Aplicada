@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="tomeylleve2021-001-site1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Program\ Files\ \(x86\)\\EasyPHP-Devserver-17\\eds-www\\IF-6201-Aplicada\\IF-6201-Aplicada\\Pagina\ Principal\ Tome&amp;Lleve\\IF6201-Tome-Lleve\\IF6201-Tome-Lleve\\obj\\Release\\net5\.0\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>
